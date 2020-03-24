@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Flasketvj - Mapper </title>
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    </head>
+
+    <body class="red lighten-5">
+
+        <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">
+                <div class="">
+                    <img src="static/images/pilogo.svg.png" style="width:30px; height:auto" />
+                    <div style="display:inline-block;font-size: small;">pi@{{ hostname }} --> </div>
+                    <div style="display:inline-block;font-size: small;">{{ ipAddress }}</div>
+                </div>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Navbar Link</a></li>
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="#">Navbar Link</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+        <div class="tabset">
+            <!-- Tab 1 -->
+            <input type="radio" name="tabset" id="tab1" aria-controls="mapper1" checked>
+            <label for="tab1">Sys Control</label>
+            <!-- Tab 2 -->
+            <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+            <label for="tab2">Rauchbier</label>
+            <!-- Tab 3 -->
+            <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+            <label for="tab3">Dunkles Bock</label>
+
+            <div class="tab-panels">
+                <section id="mapper1" class="tab-panel">
+                    <h2>Sys Control</h2>
+                    <a href="/clear_console">
+                        <div class="div1">Clear CLI</div>
+                    </a>
+                    <a href="/mapper_run">
+                        <div class="div1">Turn on </div>
+                    </a>
+                    <a href="/mapper_kill">
+                        <div class="div2">Turn off </div>
+                    </a>
+                    <a href="/reboot">
+                        <div class="div1">Reboot</div>
+                    </a>
+                    <a href="/shutdown">
+                        <div class="div2">Power off</div>
+                    </a>
+                    <a href="/ext">
+                        <div class="div3">Exit to CLI</div>
+                    </a>
+                    <a href="/newcomp">
+                        <div class="div3">New Composition</div>
+                    </a>
+                    <a href="/mapper_save">
+                        <div class="div3">!SAVE!</div>
+                    </a>
+                    <a href="/present_mode">
+                        <div class="div1">Present Mode </div>
+                    </a>
+                    <a href="/texture_mode">
+                        <div class="div2">Texture Editing Mode </div>
+                    </a>
+                    <a href="/mapping_mode">
+                        <div class="div3">Projection mapping Mode </div>
+                    </a>
+                    <a href="/source_selection_mode">
+                        <div class="div4">Source selection Mode</div>
+                    </a>
+                </section>
+                <section id="rauchbier" class="tab-panel">
+                    <h2>6B. Rauchbier</h2>
+                    <p><strong>Overall Impression:</strong> An elegant, malty German amber lager with a balanced,
+                        complementary beechwood smoke character. Toasty-rich malt in aroma and flavor, restrained
+                        bitterness, low to high smoke flavor, clean fermentation profile, and an attenuated finish
+                        are characteristic.</p>
+                    <p><strong>History:</strong> A historical specialty of the city of Bamberg, in the Franconian
+                        region of Bavaria in Germany. Beechwood-smoked malt is used to make a Märzen-style amber
+                        lager. The smoke character of the malt varies by maltster; some breweries produce their own
+                        smoked malt (rauchmalz).</p>
+                </section>
+                <section id="dunkles" class="tab-panel">
+                    <h2>6C. Dunkles Bock</h2>
+                    <p><strong>Overall Impression:</strong> A dark, strong, malty German lager beer that emphasizes
+                        the malty-rich and somewhat toasty qualities of continental malts without being sweet in the
+                        finish.</p>
+                    <p><strong>History:</strong> Originated in the Northern German city of Einbeck, which was a
+                        brewing center and popular exporter in the days of the Hanseatic League (14th to 17th
+                        century). Recreated in Munich starting in the 17th century. The name “bock” is based on a
+                        corruption of the name “Einbeck” in the Bavarian dialect, and was thus only used after the
+                        beer came to Munich. “Bock” also means “Ram” in German, and is often used in logos and
+                        advertisements.</p>
+                </section>
+            </div>
+
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="orange-text text-lighten-3" href="https://www.cyberfreak.it">Cyberfreak
+                    Creative Studio</a>
+            </div>
+        </div>
+        </footer>
+        <!--  Scripts-->
+        <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+                <script src="../static/js/rpi-status-monitor.js"></script>
+                <script src="../static/js/materialize.js"></script>
+                <script src="../static/js/rpi-status-monitor.js"></script> -->
+
+    </body>
+
+</html>

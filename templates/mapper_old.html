@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Flasketvj - Mapper </title>
+    </head>
+
+    <body class="red lighten-5">
+
+        <nav class="black lighten-1" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">
+                    <div class="">
+                        <img src="/static/images/pilogo.svg.png" style="width:30px; height:auto" />
+                        <div style="display:inline-block;font-size: medium;">{{ ipAddress }}</div>
+                    </div>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Navbar Link</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="#">Navbar Link</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+        <style>
+            .parent {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-rows: repeat(5, 1fr);
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+            }
+
+            .divMonitor {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: repeat(1, 1fr);
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+                border-style: 2px black green solid;
+                min-height: 5vh;
+                border-radius: 3px;
+
+            }
+
+            .divMonitor>.monitor {
+                text-align: center;
+                font-size: large;
+            }
+
+            .div1 {
+                background-color: rgb(226, 95, 43);
+                grid-area: 2 / 1 / 3 / 2;
+            }
+
+            .div2 {
+                background-color: blueviolet;
+                grid-area: 2 / 2 / 3 / 3;
+            }
+
+            .div3 {
+                background-color: rgb(226, 95, 43);
+                grid-area: 2 / 3 / 3 / 4;
+            }
+
+            .div4 {
+                background-color: blueviolet;
+                grid-area: 2 / 4 / 3 / 5;
+            }
+
+            .div5 {
+                background-color: rgb(226, 95, 43);
+                grid-area: 2 / 5 / 3 / 6;
+            }
+        </style>
+        <div class="divMonitor">
+            <div class="monitor">{{ infoText }}</div>
+        </div>
+        <div class="parent">
+            <a href="/mapper_run">
+                <div class="div1">Turn on </div>
+            </a>
+            <a href="/mapper_kill">
+                <div class="div2">Turn off </div>
+            </a>
+            <a href="/mapper_save">
+                <div class="div3">!SAVE!</div>
+            </a>
+            <a href="/reboot">
+                <div class="div1">Reboot</div>
+            </a>
+            <a href="/shutdown">
+                <div class="div2">Power off</div>
+            </a>
+            <a href="/newcomp">
+                <div class="div3">New Composition</div>
+            </a>
+
+            <a href="/present_mode">
+                <div class="div1">Present Mode </div>
+            </a>
+            <a href="/texture_mode">
+                <div class="div2">Texture Editing Mode </div>
+            </a>
+            <a href="/mapping_mode">
+                <div class="div3">Projection mapping Mode </div>
+            </a>
+            <a href="/source_selection_mode">
+                <div class="div4">Source selection Mode</div>
+            </a>
+            <a href="/show_controls">
+                <div class="div1">Show Controls</div>
+            </a>
+            <a href="/add_triangle">
+                <div class="div2">Add Triangle</div>
+            </a>
+            <a href="/add_quad">
+                <div class="div3">Add Quad</div>
+            </a>
+            <a href="/add_grid">
+                <div class="div4">Add Grid Warp</div>
+            </a>
+            <a href="/add_circle">
+                <div class="div5">Add circle surface</div>
+            </a>
+            <a href="/duplicate">
+                <div class="div1">Duplicate Selected</div>
+            </a>
+            <a href="/scale_up">
+                <div class="div2">Scale surface up +</div>
+            </a>
+            <a href="/scale_down">
+                <div class="div3">Scale surface down -</div>
+            </a>
+            <a href="/toggle_perspective">
+                <div class="div4">Toggle perspective</div>
+            </a>
+            <a href="/add_columns">
+                <div class="div5">Add columns to grid</div>
+            </a>
+            <a href="/remove_columns">
+                <div class="div1">Remove columns</div>
+            </a>
+            <a href="/add_rows">
+                <div class="div2">add rows to grid</div>
+            </a>
+            <a href="/remove_rows">
+                <div class="div3">Remove rows</div>
+            </a>
+            <a href="/next_surface">
+                <div class="div4">select next surface</div>
+            </a>
+            <a href="/previous_surface">
+                <div class="div5">select previous surface</div>
+            </a>
+            <a href="/next_vertex">
+                <div class="div1">select next vertex</div>
+            </a>
+            <a href="/previous_vertex">
+                <div class="div2">previous next vertex</div>
+            </a>
+            <a href="/layer_up">
+                <div class="div3">Move one layer up</div>
+            </a>
+            <a href="/layer_down">
+                <div class="div4">select next surface</div>
+            </a>
+            <a href="/layer_panel">
+                <div class="div5">Hide/show layer panel</div>
+            </a>
+            <a href="/Undo">
+                <div class="div1">Undo</div>
+            </a>
+            <a href="/layer_up">
+                <div class="div3">Move one layer up</div>
+            </a>
+            <a href="/layer_down">
+                <div class="div4">select next surface</div>
+            </a>
+            <a href="/ext">
+                <div class="div5">Exit app</div>
+            </a>
+            <a href="/delete">
+                <div class="div1">Delete surface</div>
+            </a>
+            <a href="/pause">
+                <div class="div3">Pause</div>
+            </a>
+            <a href="/next_source">
+                <div class="div4">Select next source</div>
+            </a>
+            <a href="/arrow_up">
+                <div class="div1">arrow_up</div>
+            </a>
+            <a href="/arrow_down">
+                <div class="div3">arrow_down</div>
+            </a>
+            <a href="/arrow_left">
+                <div class="div4">arrow_left</div>
+            </a>
+            <a href="/arrow_right">
+                <div class="div5">arrow_right</div>
+            </a>
+            <a href="/accuracy">
+                <div class="div3">accuracy</div>
+            </a>
+        </div>
+
+
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="orange-text text-lighten-3" href="https://www.cyberfreak.it">Cyberfreak Creative
+                    Studio</a>
+            </div>
+        </div>
+        </footer>
+
+
+        <!--  Scripts-->
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="../static/js/rpi-status-monitor.js"></script>
+        <script src="../static/js/materialize.js"></script>
+        <!--    <script src="../static/js/rpi-status-monitor.js"></script>-->
+
+    </body>
+
+</html>
