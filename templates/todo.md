@@ -14,6 +14,7 @@ Base
 - add raspberry hotspot function
 -activate hotspot from webpage
 - add page to see what is happening on the screen and eventually click it (scrot way..needs x?)
+https://github.com/hanzelpeter/dispmanx_vnc
 https://www.realvnc.com/en/news/control-computer-within-your-web-browser/
 https://github.com/novnc/noVNC
 https://unix.stackexchange.com/questions/262219/how-to-use-web-browser-as-vnc-client

@@ -1,5 +1,15 @@
 # Flasketvj
 Flask Dashboard built with Python to control videomapping stuff on raspberry pi
+# Base setup
+start from the image of the awsome ofxPimapper(raspbian stretch)
+https://ofxpimapper.com/
+https://gitlab.com/kriwkrow/pimapper/-/jobs/280309100/artifacts/raw/PiMapper_v1.2.0.zip
+burn it to sd
+git clone this repo to /home/pi/ besite the ofx folder
+## Install dependencies ##
+`sudo apt-get install python3 python3-pip python3-flask`
+
+TODO:add dependencies from pip [keyboard subprocess etc]
 
 ## Getting started: ##
 * **app.py** is our servlet, which runs using Flask (http://flask.pocoo.org/). Install it by running: 
