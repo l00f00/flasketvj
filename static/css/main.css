@@ -1,6 +1,24 @@
 /*
  CSS for the main interaction
 */
+.divMonitor {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  border: inset 1px;;
+  min-height: 5vh;
+  line-height: 5vh;
+  max-height: max-content;
+  border-radius: 3px;
+
+}
+
+.divMonitor>.monitor {
+  text-align: center;
+  font-size: large;
+}
 .tabset > input[type="radio"] {
   position: absolute;
   left: -200vw;

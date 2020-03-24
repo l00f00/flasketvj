@@ -11,19 +11,33 @@
     <body class="red lighten-5">
 
         <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">
-                <div class="">
+                <div class="divsys0">
                     <img src="static/images/pilogo.svg.png" style="width:30px; height:auto" />
                     <div style="display:inline-block;font-size: small;">pi@{{ hostname }} --> </div>
                     <div style="display:inline-block;font-size: small;">{{ ipAddress }}</div>
                 </div>
             </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#">Navbar Link</a></li>
-            </ul>
-            <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Navbar Link</a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="/clear_console">
+                <div class="divsys1">Clear CLI</div>
+            </a>
+            <a href="/mapper_run">
+                <div class="divsys2">Turn on </div>
+            </a>
+            <a href="/mapper_kill">
+                <div class="divsys3">Turn off </div>
+            </a>
+            <a href="/reboot">
+                <div class="divsys4">Reboot</div>
+            </a>
+            <a href="/shutdown">
+                <div class="divsys5">Power off</div>
+            </a>
+            <a href="/ext">
+                <div class="divsys6">Exit to CLI</div>
+            </a>
+        </div>
+        <div class="divMonitor">
+            <div class="monitor">{{ infoText }}</div>
         </div>
         <div class="tabset">
             <!-- Tab 1 -->
@@ -31,32 +45,17 @@
             <label for="tab1">Sys Control</label>
             <!-- Tab 2 -->
             <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
-            <label for="tab2">Rauchbier</label>
+            <label for="tab2">Mapping</label>
             <!-- Tab 3 -->
-            <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-            <label for="tab3">Dunkles Bock</label>
+            <input type="radio" name="tabset" id="tab3" aria-controls="mapper2">
+            <label for="tab3">Connection</label>
+            <!-- Tab 4 -->
+            <input type="radio" name="tabset" id="tab4" aria-controls="mapper2">
+            <label for="tab3">Remote</label>
 
             <div class="tab-panels">
                 <section id="mapper1" class="tab-panel">
                     <h2>Sys Control</h2>
-                    <a href="/clear_console">
-                        <div class="div1">Clear CLI</div>
-                    </a>
-                    <a href="/mapper_run">
-                        <div class="div1">Turn on </div>
-                    </a>
-                    <a href="/mapper_kill">
-                        <div class="div2">Turn off </div>
-                    </a>
-                    <a href="/reboot">
-                        <div class="div1">Reboot</div>
-                    </a>
-                    <a href="/shutdown">
-                        <div class="div2">Power off</div>
-                    </a>
-                    <a href="/ext">
-                        <div class="div3">Exit to CLI</div>
-                    </a>
                     <a href="/newcomp">
                         <div class="div3">New Composition</div>
                     </a>
