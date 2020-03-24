@@ -1,12 +1,18 @@
-# rpi-status-monitor
-Flask Dashboard built with Python that displays status information about the raspberry pi
+# Flasketvj
+Flask Dashboard built with Python to control videomapping stuff on raspberry pi
 
 ## Getting started: ##
 * **app.py** is our servlet, which runs using Flask (http://flask.pocoo.org/). Install it by running: 
 
   `sudo apt-get install python3-flask`
 
-## Starting the servlet: ##
+## Spinning the shit in development: ##
+* **app.py** is our servlet, which runs using Flask (http://flask.pocoo.org/). Install it by running: 
+
+  `cd flasketvj/`
+  `sudo python3 app.py`
+
+<!-- ## Starting the servlet: ##
 * change to the **rpi-status-monitor** directory
 * From the command line:
 
@@ -14,7 +20,7 @@ Flask Dashboard built with Python that displays status information about the ras
 * My servlet is running through crontab on my raspberry pi. It runs the program every time the rpi restarts.
   For info on how to set up crontab, follow this link: https://www.raspberrypi.org/documentation/linux/usage/cron.md
   
-  `@reboot sudo python3 rpi-status-monitor/app.py &`
+  `@reboot sudo python3 rpi-status-monitor/app.py &` -->
   
 ## [Locally] Accessing the Dashboard: ##
 * Since the servlet is running locally, you can access the dashboard by navigating to **http://mapperbox0.local** through your web browser
