@@ -17,6 +17,6 @@ Flask Dashboard built with Python that displays status information about the ras
   `@reboot sudo python3 rpi-status-monitor/app.py &`
   
 ## [Locally] Accessing the Dashboard: ##
-* Since the servlet is running locally, you can access the dashboard by navigating to **https://127.0.0.1** through your pi's web browser
+* Since the servlet is running locally, you can access the dashboard by navigating to **http://mapperbox0.local** through your web browser
 
 ## [Remotely] Accessing the Dashboard: ##
