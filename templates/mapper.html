@@ -13,7 +13,7 @@
          <div class="nav">
             <div class="nav-item1">
                 <a href="/"><img src="static/images/pilogo.svg.png" style="max-height:20px;max-width: auto;"/>
-                pi@{{ hostname }} -->{{ ipAddress }}</a></div>
+                pi@</a>{{ hostname }}{{ ipAddress }}</div>
               <div class="nav-item2"><a href="/mapper_run">Turn on</a></div>
               <div class="nav-item3"><a href="/mapper_kill">Turn offt</a></div>
               <div class="nav-item4"><a href="/reboot">Reboot</a></div>
@@ -26,7 +26,7 @@
         </div>
         <div class="tabset">
             <!-- Tab 1 -->
-            <input type="radio" name="tabset" id="tab1" aria-controls="mapper1" onclick="window.location='/present_mode';" checked>
+            <input type="radio" name="tabset" id="tab1" aria-controls="mapper1" onclick="window.location='/present_mode';">
             <label for="tab1">Presentation Mode</label>
             <!-- Tab 2 -->
             <input type="radio" name="tabset" id="tab2" aria-controls="mapper2" onclick="window.location='/mapping_mode';" >
