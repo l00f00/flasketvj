@@ -42,9 +42,9 @@
             <label for="tab5">Save</label>
                         <!-- Tab 6 -->
            <input type="radio" name="tabset" id="tab6" aria-controls="mapper6">
-           <label for="tab6">Arrows</label>
+           <label for="tab6" checked="{% if true=='save' %}true{%endif %}" >Arrows</label>
             <!-- Tab 6 -->
-            <input type="radio" name="tabset" id="tab7" aria-controls="mapper7" onclick="window.location='/Undo';">
+            <input type="radio" name="tabset" id="tab7" aria-controls="mapper7" onclick="window.location='/Undo';" checked="{% if true=='undo' %}true{%endif %}">
             <label for="tab6">Undo</label>
             <!-- Tab 7 -->
             <input type="radio" name="tabset" id="tab7" aria-controls="mapper7" onclick="window.location='/show_controls';">
