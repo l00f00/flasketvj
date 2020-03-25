@@ -193,9 +193,7 @@ def source_selection_mode():
 def show_controls():
     keyboard.write('i')
     info = 'Show info Controls'
-    true ='info'
-    infoText=info
-    return infoText, true
+    return render_template('mapper.html', infoText=info,true='info')
 
 
 # t	Add triangle surface
