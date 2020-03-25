@@ -265,7 +265,7 @@ def toggle_perspective():
 # ]	add columns to grid surface (grid warp surfaces only)
 @app.route('/add_columns')
 def add_columns():
-    keyboard.write('[')
+    keyboard.write(']')
     info = 'add columns to grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -273,7 +273,7 @@ def add_columns():
 # [	remove columns from grid surface (grid warp surfaces only)
 @app.route('/remove_columns')
 def remove_columns():
-    keyboard.write(']')
+    keyboard.write('[')
     info = 'remove columns from grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -281,7 +281,7 @@ def remove_columns():
 # }	add rows to grid surface (grid warp surfaces only)
 @app.route('/add_rows')
 def add_rows():
-    keyboard.write('{')
+    keyboard.write('}')
     info = 'add rows to grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -289,7 +289,7 @@ def add_rows():
 # {	remove rows from grid surface (grid warp surfaces only)
 @app.route('/remove_rows')
 def remove_rows():
-    keyboard.write('}')
+    keyboard.write('{')
     info = 'remove rows from grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -349,7 +349,7 @@ def layer_down():
 # s	Save composition
 @app.route('/mapper_save')
 def save_mapper():
-    keyboard.write('s')
+    keyboard.write('ss')
     info = 'Saved'
     return render_template('mapper.html', infoText=info,checked='save')
 
