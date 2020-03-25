@@ -247,6 +247,7 @@ def scale_up():
 
 
 # -	Scale surface down
+#NOT WORKING
 @app.route('/scale_down')
 def scale_down():
     keyboard.write('-')
@@ -265,7 +266,7 @@ def toggle_perspective():
 # ]	add columns to grid surface (grid warp surfaces only)
 @app.route('/add_columns')
 def add_columns():
-    keyboard.write(']')
+    keyboard.press_and_release(']')
     info = 'add columns to grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -273,7 +274,7 @@ def add_columns():
 # [	remove columns from grid surface (grid warp surfaces only)
 @app.route('/remove_columns')
 def remove_columns():
-    keyboard.write('[')
+    keyboard.press_and_release('[')
     info = 'remove columns from grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
