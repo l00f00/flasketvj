@@ -193,7 +193,9 @@ def source_selection_mode():
 def show_controls():
     keyboard.write('i')
     info = 'Show info Controls'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    true ='info'
+    infoText=info
+    return infoText, true
 
 
 # t	Add triangle surface
@@ -365,7 +367,7 @@ def layer_panel():
 def Undo():
     keyboard.write('z')
     info = 'Undo'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,true='undo')
 
 
 # rbt	Reboot (Raspberry Pi only)
