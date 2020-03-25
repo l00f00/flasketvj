@@ -8,95 +8,151 @@
         <link rel="stylesheet" type="text/css" href="/static/css/main.css">
     </head>
 
-    <body class="red lighten-5">
-
-        <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">
-                <div class="divsys0">
-                    <img src="static/images/pilogo.svg.png" style="width:30px; height:auto" />
-                    <div style="display:inline-block;font-size: small;">pi@{{ hostname }} --> </div>
-                    <div style="display:inline-block;font-size: small;">{{ ipAddress }}</div>
-                </div>
+    <body class="">
+        
+         <div class="nav">
+            <div class="nav-item1">
+                <a href="/"><img src="static/images/pilogo.svg.png" />
+                <div style="font-size: small;">pi@{{ hostname }} -->{{ ipAddress }}</div>
             </a>
-            <a href="/clear_console">
-                <div class="divsys1">Clear CLI</div>
-            </a>
-            <a href="/mapper_run">
-                <div class="divsys2">Turn on </div>
-            </a>
-            <a href="/mapper_kill">
-                <div class="divsys3">Turn off </div>
-            </a>
-            <a href="/reboot">
-                <div class="divsys4">Reboot</div>
-            </a>
-            <a href="/shutdown">
-                <div class="divsys5">Power off</div>
-            </a>
-            <a href="/ext">
-                <div class="divsys6">Exit to CLI</div>
-            </a>
+            </div>
+              <div class="nav-item2"><a href="/mapper_run">Turn on</a></div>
+              <div class="nav-item3"><a href="/mapper_kill">Turn offt</a></div>
+              <div class="nav-item4"><a href="/reboot">Reboot</a></div>
+              <div class="nav-item5"><a href="/shutdown">Power off</a></div>
+              <div class="nav-item6"><a href="/clear_console">Clear CLI</a></div>
+              <div class="nav-item7"><a href="/ext">Exit2CLI</a></div>
         </div>
         <div class="divMonitor">
             <div class="monitor">{{ infoText }}</div>
         </div>
         <div class="tabset">
             <!-- Tab 1 -->
-            <input type="radio" name="tabset" id="tab1" aria-controls="mapper1" checked>
-            <label for="tab1">Sys Control</label>
+            <input type="radio" name="tabset" id="tab1" aria-controls="mapper1" onclick="window.location='/present_mode';" checked>
+            <label for="tab1">Presentation Mode</label>
             <!-- Tab 2 -->
-            <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
-            <label for="tab2">Mapping</label>
+            <input type="radio" name="tabset" id="tab2" aria-controls="mapper2" onclick="window.location='/mapping_mode';" >
+            <label for="tab2">Mapping Mode</label>
             <!-- Tab 3 -->
-            <input type="radio" name="tabset" id="tab3" aria-controls="mapper2">
-            <label for="tab3">Connection</label>
+            <input type="radio" name="tabset" id="tab3" aria-controls="mapper3" onclick="window.location='/present_mode';">
+            <label for="tab3">Texture Editing Mode</label>
             <!-- Tab 4 -->
-            <input type="radio" name="tabset" id="tab4" aria-controls="mapper2">
-            <label for="tab3">Remote</label>
+            <input type="radio" name="tabset" id="tab4" aria-controls="mapper4" onclick="window.location='/source_selection_mode';">
+            <label for="tab4">Source selection Mode</label>
+            <!-- Tab 5 -->
+            <input type="radio" name="tabset" id="tab5" aria-controls="mapper5" onclick="window.location='/mapper_save';">
+            <label for="tab5">Save</label>
+                        <!-- Tab 6 -->
+           <input type="radio" name="tabset" id="tab6" aria-controls="mapper6">
+           <label for="tab6">Arrows</label>
+            <!-- Tab 6 -->
+            <input type="radio" name="tabset" id="tab7" aria-controls="mapper7" onclick="window.location='/Undo';">
+            <label for="tab6">Undo</label>
+            <!-- Tab 7 -->
+            <input type="radio" name="tabset" id="tab7" aria-controls="mapper7" onclick="window.location='/show_controls';">
+            <label for="tab6">Info</label>
 
             <div class="tab-panels">
                 <section id="mapper1" class="tab-panel">
-                    <h2>Sys Control</h2>
+                    presentation
+                    <a href="/newcomp">
+                        <div class="">New Composition</div>
+                    </a>
+                    <a href="/mapper_save">
+                        <div class="">!SAVE!</div>
+                    </a>
+                </section>
+                <section id="mapper2" class="tab-panel">
+                    <a href="/pause">
+                        <div class="div3">Pause</div>
+                    </a>
+                    <a href="/accuracy">
+                        <div class="">accuracy</div>
+                    </a>
+                    <a href="/next_surface">
+                        <div class="div4">select next surface</div>
+                    </a>
+                    <a href="/previous_surface">
+                        <div class="div5">select previous surface</div>
+                    </a>
                     <a href="/newcomp">
                         <div class="div3">New Composition</div>
                     </a>
-                    <a href="/mapper_save">
-                        <div class="div3">!SAVE!</div>
+                    <a href="/add_triangle">
+                        <div class="div2">Add Triangle</div>
                     </a>
-                    <a href="/present_mode">
-                        <div class="div1">Present Mode </div>
+                    <a href="/add_quad">
+                        <div class="div3">Add Quad</div>
                     </a>
-                    <a href="/texture_mode">
-                        <div class="div2">Texture Editing Mode </div>
+                    <a href="/add_grid">
+                        <div class="div4">Add Grid Warp</div>
                     </a>
-                    <a href="/mapping_mode">
-                        <div class="div3">Projection mapping Mode </div>
+                    <a href="/add_circle">
+                        <div class="div5">Add circle surface</div>
                     </a>
-                    <a href="/source_selection_mode">
-                        <div class="div4">Source selection Mode</div>
+                    <a href="/duplicate">
+                        <div class="div1">Duplicate Selected</div>
+                    </a>
+                    <a href="/scale_up">
+                        <div class="div2">Scale surface up +</div>
+                    </a>
+                    <a href="/scale_down">
+                        <div class="div3">Scale surface down -</div>
+                    </a>
+                    <a href="/toggle_perspective">
+                        <div class="div4">Toggle perspective</div>
+                    </a>
+                    <a href="/add_columns">
+                        <div class="div5">Add columns to grid</div>
+                    </a>
+                    <a href="/remove_columns">
+                        <div class="div1">Remove columns</div>
+                    </a>
+                    <a href="/add_rows">
+                        <div class="div2">add rows to grid</div>
+                    </a>
+                    <a href="/remove_rows">
+                        <div class="div3">Remove rows</div>
+                    </a>
+                    <a href="/layer_up">
+                        <div class="div3">layer_up</div>
+                    </a>
+                    <a href="/layer_down">
+                        <div class="div4">layer_down</div>
+                    </a>
+                    <a href="/next_vertex">
+                        <div class="div1">select next vertex</div>
+                    </a>
+                    <a href="/previous_vertex">
+                        <div class="div2">previous next vertex</div>
+                    </a>
+                    <a href="/delete">
+                        <div class="div1">Delete surface</div>
+                    </a>
+                    <a href="/arrow_up">
+                        <div class="">arrow_up</div>
+                    </a>
+                    <a href="/arrow_down">
+                        <div class="">arrow_down</div>
+                    </a>
+                    <a href="/arrow_left">
+                        <div class="">arrow_left</div>
+                    </a>
+                    <a href="/arrow_right">
+                        <div class="">arrow_right</div>
                     </a>
                 </section>
-                <section id="rauchbier" class="tab-panel">
-                    <h2>6B. Rauchbier</h2>
-                    <p><strong>Overall Impression:</strong> An elegant, malty German amber lager with a balanced,
-                        complementary beechwood smoke character. Toasty-rich malt in aroma and flavor, restrained
-                        bitterness, low to high smoke flavor, clean fermentation profile, and an attenuated finish
-                        are characteristic.</p>
-                    <p><strong>History:</strong> A historical specialty of the city of Bamberg, in the Franconian
-                        region of Bavaria in Germany. Beechwood-smoked malt is used to make a Märzen-style amber
-                        lager. The smoke character of the malt varies by maltster; some breweries produce their own
-                        smoked malt (rauchmalz).</p>
+                <section id="mapper3" class="tab-panel">
+                    texture
                 </section>
-                <section id="dunkles" class="tab-panel">
-                    <h2>6C. Dunkles Bock</h2>
-                    <p><strong>Overall Impression:</strong> A dark, strong, malty German lager beer that emphasizes
-                        the malty-rich and somewhat toasty qualities of continental malts without being sweet in the
-                        finish.</p>
-                    <p><strong>History:</strong> Originated in the Northern German city of Einbeck, which was a
-                        brewing center and popular exporter in the days of the Hanseatic League (14th to 17th
-                        century). Recreated in Munich starting in the 17th century. The name “bock” is based on a
-                        corruption of the name “Einbeck” in the Bavarian dialect, and was thus only used after the
-                        beer came to Munich. “Bock” also means “Ram” in German, and is often used in logos and
-                        advertisements.</p>
+                <section id="mapper4" class="tab-panel">
+                    source
+                    <a href="/next_source">
+                        <div class="div4">Select next source</div>
+                    </a>
+                </section>
+                <section id="mapper5" class="tab-panel">
+                    save
                 </section>
             </div>
 
@@ -108,12 +164,6 @@
             </div>
         </div>
         </footer>
-        <!--  Scripts-->
-        <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-                <script src="../static/js/rpi-status-monitor.js"></script>
-                <script src="../static/js/materialize.js"></script>
-                <script src="../static/js/rpi-status-monitor.js"></script> -->
-
     </body>
 
 </html>
