@@ -100,11 +100,11 @@ body {
 }
 
 .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
-.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
-.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
-.tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
-.tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
-.tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+.tabset > input:nth-child(2):checked ~ .tab-panels > .tab-panel:nth-child(2),
+.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(3),
+.tabset > input:nth-child(4):checked ~ .tab-panels > .tab-panel:nth-child(4),
+.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(5),
+.tabset > input:nth-child(6):checked ~ .tab-panels > .tab-panel:nth-child(6) {
   display: block;
 }
 

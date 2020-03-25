@@ -161,7 +161,7 @@ def turn_off():
 def present_mode():
     keyboard.write('1')
     info = 'Presentation mode'
-    return render_template('mapper.html', infoText=info,true='present')
+    return render_template('mapper.html', infoText=info,checked='present')
 
 
 # 2	Texture editing mode
@@ -169,7 +169,7 @@ def present_mode():
 def texture_mode():
     keyboard.write('2')
     info = 'Texture Editing Mode'
-    return render_template('mapper.html', infoText=info,true='texture')
+    return render_template('mapper.html', infoText=info,checked='texture')
 
 
 # 3	Projection mapping mode, use this to select a surface first
@@ -177,7 +177,7 @@ def texture_mode():
 def mapping_mode():
     keyboard.write('3')
     info = 'Projection mapping mode'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # 4	Source selection mode
@@ -185,7 +185,7 @@ def mapping_mode():
 def source_selection_mode():
     keyboard.write('4')
     info = 'Source selection mode'
-    return render_template('mapper.html', infoText=info,true='source')
+    return render_template('mapper.html', infoText=info,checked='source')
 
 
 # i	Show info Controls
@@ -193,7 +193,7 @@ def source_selection_mode():
 def show_controls():
     keyboard.write('i')
     info = 'Show info Controls'
-    return render_template('mapper.html', infoText=info,true='info')
+    return render_template('mapper.html', infoText=info,checked='info')
 
 
 # t	Add triangle surface
@@ -201,7 +201,7 @@ def show_controls():
 def add_triangle():
     keyboard.write('t')
     info = 'Addeded Triangle'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # q	Add quad surface
@@ -209,7 +209,7 @@ def add_triangle():
 def add_quad():
     keyboard.write('q')
     info = 'Addeded Quad'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # g	Add grid warp surface
@@ -217,7 +217,7 @@ def add_quad():
 def add_grid():
     keyboard.write('q')
     info = 'Addeded Grid Warp'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # c	Add circle surface
@@ -225,7 +225,7 @@ def add_grid():
 def add_circle():
     keyboard.write('c')
     info = 'Add circle surface'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # d	duplicate selected surface
@@ -233,7 +233,7 @@ def add_circle():
 def duplicate():
     keyboard.write('d')
     info = 'Duplicated Selected Surface'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # +	Scale surface up
@@ -241,7 +241,7 @@ def duplicate():
 def scale_up():
     keyboard.write('+')
     info = 'Scaled surface up +'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # -	Scale surface down
@@ -249,7 +249,7 @@ def scale_up():
 def scale_down():
     keyboard.write('-')
     info = 'Scale surface down -'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # p	toggle perspective warping (quad surfaces only)
@@ -257,7 +257,7 @@ def scale_down():
 def toggle_perspective():
     keyboard.write('p')
     info = 'Toggle perspective warping<br/>(quad surfaces only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # ]	add columns to grid surface (grid warp surfaces only)
@@ -265,7 +265,7 @@ def toggle_perspective():
 def add_columns():
     keyboard.write(']')
     info = 'add columns to grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # [	remove columns from grid surface (grid warp surfaces only)
@@ -273,7 +273,7 @@ def add_columns():
 def remove_columns():
     keyboard.write('[')
     info = 'remove columns from grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # }	add rows to grid surface (grid warp surfaces only)
@@ -281,7 +281,7 @@ def remove_columns():
 def add_rows():
     keyboard.write('}')
     info = 'add rows to grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # {	remove rows from grid surface (grid warp surfaces only)
@@ -289,7 +289,7 @@ def add_rows():
 def remove_rows():
     keyboard.write('{')
     info = 'remove rows from grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # .	select next surface (projection mapping mode only)
@@ -297,7 +297,7 @@ def remove_rows():
 def next_surface():
     keyboard.write('.')
     info = 'select next surface<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # ,	select previous surface (projection mapping mode only)
@@ -305,7 +305,7 @@ def next_surface():
 def previous_surface():
     keyboard.write(',')
     info = 'select previous surface<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # >	select next vertex
@@ -313,7 +313,7 @@ def previous_surface():
 def next_vertex():
     keyboard.write('>')
     info = 'select next vertex<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # <	select previous vertex
@@ -321,7 +321,7 @@ def next_vertex():
 def previous_vertex():
     keyboard.write('<')
     info = 'previous next vertex<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # 0	Move selected surface one layer up
@@ -331,7 +331,7 @@ def previous_vertex():
 def layer_up():
     keyboard.write('0')
     info = 'Move selected surface one layer up<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # 9	Move selected surface one layer down
@@ -341,7 +341,7 @@ def layer_up():
 def layer_down():
     keyboard.write('9')
     info = 'Move selected surface one layer down<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # s	Save composition
@@ -349,7 +349,7 @@ def layer_down():
 def save_mapper():
     keyboard.write('ss')
     info = 'Saved'
-    return render_template('mapper.html', infoText=info,true='save')
+    return render_template('mapper.html', infoText=info,checked='save')
 
 
 # l	Hide/show layer panel
@@ -357,7 +357,7 @@ def save_mapper():
 def layer_panel():
     keyboard.write('l')
     info = 'Hide/show layer panel'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # z	Undo
@@ -365,7 +365,7 @@ def layer_panel():
 def Undo():
     keyboard.write('z')
     info = 'Undo'
-    return render_template('mapper.html', infoText=info,true='undo')
+    return render_template('mapper.html', infoText=info,checked='undo')
 
 
 # rbt	Reboot (Raspberry Pi only)
@@ -374,7 +374,7 @@ def reboot():
     keyboard.write('ss')
     keyboard.write('rbt')
     info = 'reboooootin wait up!'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # sdn	Shutdown (Raspberry Pi only)
@@ -391,7 +391,7 @@ def shudown():
 def newcomp():
     keyboard.write('new')
     info = 'Clear composition<br/>(remove all surfaces)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # ext	Exit application and return to command line
@@ -407,7 +407,7 @@ def ext():
 def BACKSPACE():
     keyboard.write('backspace')
     info = 'Delete surface'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # SPACE	Toggle pause for video sources (texture and projection mapping modes)
@@ -415,7 +415,7 @@ def BACKSPACE():
 def SPACE():
     keyboard.write('space')
     info = 'Pause'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # TAB	Select next source (no need to use the source selection interface)
@@ -423,7 +423,7 @@ def SPACE():
 def next_source():
     keyboard.send('tab')
     info = 'Select next source<br/>(no need to use the source selection interface)'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # Arrow keys	Move selection. If no surface is selected in the projection mapping mode, all surfaces are moved.
@@ -431,28 +431,28 @@ def next_source():
 def arrow_up():
     keyboard.send('up')
     info = 'arrow up'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 @app.route('/arrow_down')
 def arrow_down():
     keyboard.send('down')
     info = 'arrow down'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 @app.route('/arrow_left')
 def arrow_left():
     keyboard.send('left')
     info = 'arrow left'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 @app.route('/arrow_right')
 def arrow_right():
     keyboard.send('right')
     info = 'arrow right'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # /	Toggle 1px/10px steps for keyboard moves on Raspberry Pi
@@ -460,8 +460,8 @@ def arrow_right():
 def accuracy():
     keyboard.send('space')
     info = 'Toggle 1px/10px steps for keyboard moves on Raspberry Pi'
-    return render_template('mapper.html', infoText=info,true='mapping')
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='mapperbox0.local', port=80)
+    app.run(debug=checked, host='mapperbox0.local', port=80)

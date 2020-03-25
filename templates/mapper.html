@@ -26,28 +26,28 @@
         </div>
         <div class="tabset">
             <!-- Tab 1 -->
-            <input type="radio" name="tabset" id="tab1" aria-controls="mapper1" onclick="window.location='/present_mode';" checked="{% if true=='present' %}true{%endif %}">
+            <input type="radio" name="tabset" id="tab1" aria-controls="mapper1" onclick="window.location='/present_mode';" {% if checked=='present' %}checked{%endif %}>
             <label for="tab1">Presentation Mode</label>
             <!-- Tab 2 -->
-            <input type="radio" name="tabset" id="tab2" aria-controls="mapper2" onclick="window.location='/mapping_mode';" checked="{% if true=='mapper' %}true{%endif %}">
+            <input type="radio" name="tabset" id="tab2" aria-controls="mapper2" onclick="window.location='/mapping_mode';" {% if checked=='mapper' %}checked{%endif %}>
             <label for="tab2">Mapping Mode</label>
             <!-- Tab 3 -->
-            <input type="radio" name="tabset" id="tab3" aria-controls="mapper3" onclick="window.location='/present_mode';" checked="{% if true=='texture' %}true{%endif %}">
+            <input type="radio" name="tabset" id="tab3" aria-controls="mapper3" onclick="window.location='/present_mode';" {% if checked=='texture' %}checked{%endif %}>
             <label for="tab3">Texture Editing Mode</label>
             <!-- Tab 4 -->
-            <input type="radio" name="tabset" id="tab4" aria-controls="mapper4" onclick="window.location='/source_selection_mode';" checked="{% if true=='source' %}true{%endif %}">
+            <input type="radio" name="tabset" id="tab4" aria-controls="mapper4" onclick="window.location='/source_selection_mode';" {% if checked=='source' %}checked{%endif %}>
             <label for="tab4">Source selection Mode</label>
             <!-- Tab 5 -->
-            <input type="radio" name="tabset" id="tab5" aria-controls="mapper5" onclick="window.location='/mapper_save';" checked="{% if true=='save' %}true{%endif %}">
+            <input type="radio" name="tabset" id="tab5" aria-controls="mapper5" onclick="window.location='/mapper_save';" {% if checked=='save' %}checked{%endif %}>
             <label for="tab5">Save</label>
                         <!-- Tab 6 -->
            <input type="radio" name="tabset" id="tab6" aria-controls="mapper6">
-           <label for="tab6" checked="{% if true=='save' %}true{%endif %}" >Arrows</label>
+           <label for="tab6" {% if checked=='save' %}checked{%endif %}>Arrows</label>
             <!-- Tab 6 -->
-            <input type="radio" name="tabset" id="tab7" aria-controls="mapper7" onclick="window.location='/Undo';" checked="{% if true=='undo' %}true{%endif %}">
+            <input type="radio" name="tabset" id="tab7" aria-controls="mapper7" onclick="window.location='/Undo';" {% if checked=='undo' %}checked{%endif %}>
             <label for="tab6">Undo</label>
             <!-- Tab 7 -->
-            <input type="radio" name="tabset" id="tab7" aria-controls="mapper7" onclick="window.location='/show_controls';"checked="{% if true=='info' %}true{%endif %}">
+            <input type="radio" name="tabset" id="tab7" aria-controls="mapper7" onclick="window.location='/show_controls';"{% if checked=='info' %}checked{%endif %}>
             <label for="tab6">Info</label>
 
             <div class="tab-panels">
