@@ -81,7 +81,6 @@ def getCelsius():
     celsius = round(celsius, 1)  # celsius rounded to one decimal place
     return celsius
 
-
 # def clearconsole():
 #     response = os.system(
 #         "sudo killall -u root -SIGKILL example_basic && reset")
@@ -112,7 +111,6 @@ def index():
         ipAddress=getIpAddress()[0],
         hostname=getHostname()[0],
         processInfo=getProcessInfo())
-
 
 @app.route('/mapper', methods=['POST', 'GET'])
 def mapper():
@@ -155,12 +153,15 @@ def turn_off():
 
 
 # Key	Function
+# def some_view():
+#     return render_template('template.html', checked='home')
+
 # 1	Presentation mode
 @app.route('/present_mode')
 def present_mode():
     keyboard.write('1')
     info = 'Presentation mode'
-    return render_template('mapper.html', infoText=info)
+    return render_template('mapper.html', infoText=info,checked='present')
 
 
 # 2	Texture editing mode
@@ -168,7 +169,7 @@ def present_mode():
 def texture_mode():
     keyboard.write('2')
     info = 'Texture Editing Mode'
-    return render_template('mapper.html', infoText=info)
+    return render_template('mapper.html', infoText=info,checked='texture')
 
 
 # 3	Projection mapping mode, use this to select a surface first
@@ -176,7 +177,7 @@ def texture_mode():
 def mapping_mode():
     keyboard.write('3')
     info = 'Projection mapping mode'
-    return render_template('mapper.html', infoText=info)
+    return render_template('mapper.html', infoText=info,checked='mapping')
 
 
 # 4	Source selection mode
@@ -184,7 +185,7 @@ def mapping_mode():
 def source_selection_mode():
     keyboard.write('4')
     info = 'Source selection mode'
-    return render_template('mapper.html', infoText=info)
+    return render_template('mapper.html', infoText=info,checked='source')
 
 
 # i	Show info Controls

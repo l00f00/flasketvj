@@ -26,16 +26,16 @@
         </div>
         <div class="tabset">
             <!-- Tab 1 -->
-            <input type="radio" name="tabset" id="tab1" aria-controls="mapper1" onclick="window.location='/present_mode';">
+            <input type="radio" name="tabset" id="tab1" aria-controls="mapper1" onclick="window.location='/present_mode';" checked="{% if true=='present' %}true{%endif %}">
             <label for="tab1">Presentation Mode</label>
             <!-- Tab 2 -->
-            <input type="radio" name="tabset" id="tab2" aria-controls="mapper2" onclick="window.location='/mapping_mode';" >
+            <input type="radio" name="tabset" id="tab2" aria-controls="mapper2" onclick="window.location='/mapping_mode';" checked="{% if true=='mapper' %}true{%endif %}">
             <label for="tab2">Mapping Mode</label>
             <!-- Tab 3 -->
-            <input type="radio" name="tabset" id="tab3" aria-controls="mapper3" onclick="window.location='/present_mode';">
+            <input type="radio" name="tabset" id="tab3" aria-controls="mapper3" onclick="window.location='/present_mode';" checked="{% if true=='texture' %}true{%endif %}">
             <label for="tab3">Texture Editing Mode</label>
             <!-- Tab 4 -->
-            <input type="radio" name="tabset" id="tab4" aria-controls="mapper4" onclick="window.location='/source_selection_mode';">
+            <input type="radio" name="tabset" id="tab4" aria-controls="mapper4" onclick="window.location='/source_selection_mode';" checked="{% if true=='source' %}true{%endif %}">
             <label for="tab4">Source selection Mode</label>
             <!-- Tab 5 -->
             <input type="radio" name="tabset" id="tab5" aria-controls="mapper5" onclick="window.location='/mapper_save';">
