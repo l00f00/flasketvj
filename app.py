@@ -39,6 +39,10 @@ def getMemoryUsage(lineNumber):
     response = os.popen('free -m').readlines()
     return response[lineNumber].split()
 
+def checked():
+    checked=''
+    return checked
+
 
 # function that returns how long the raspberry pi has been running
 def getUptime():
