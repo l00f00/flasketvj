@@ -161,7 +161,7 @@ def turn_off():
 def present_mode():
     keyboard.write('1')
     info = 'Presentation mode'
-    return render_template('mapper.html', infoText=info,checked='present')
+    return render_template('mapper.html', infoText=info,true='present')
 
 
 # 2	Texture editing mode
@@ -169,7 +169,7 @@ def present_mode():
 def texture_mode():
     keyboard.write('2')
     info = 'Texture Editing Mode'
-    return render_template('mapper.html', infoText=info,checked='texture')
+    return render_template('mapper.html', infoText=info,true='texture')
 
 
 # 3	Projection mapping mode, use this to select a surface first
@@ -177,7 +177,7 @@ def texture_mode():
 def mapping_mode():
     keyboard.write('3')
     info = 'Projection mapping mode'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info,true='mapping')
 
 
 # 4	Source selection mode
@@ -185,7 +185,7 @@ def mapping_mode():
 def source_selection_mode():
     keyboard.write('4')
     info = 'Source selection mode'
-    return render_template('mapper.html', infoText=info,checked='source')
+    return render_template('mapper.html', infoText=info,true='source')
 
 
 # i	Show info Controls
