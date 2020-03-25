@@ -127,9 +127,7 @@ def mapper():
 
 @app.route('/clear_console')
 def clearconsole():
-    keyboard.send('enter')
     keyboard.write('reset')
-    keyboard.send('enter')
     #os.system("sudo reset")
     info = 'Mapper Killed & CLI CLEARED'
     return render_template('mapper.html',
@@ -219,7 +217,7 @@ def add_quad():
 # g	Add grid warp surface
 @app.route('/add_grid')
 def add_grid():
-    keyboard.write('q')
+    keyboard.write('g')
     info = 'Addeded Grid Warp'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -267,7 +265,7 @@ def toggle_perspective():
 # ]	add columns to grid surface (grid warp surfaces only)
 @app.route('/add_columns')
 def add_columns():
-    keyboard.write(']')
+    keyboard.write('[')
     info = 'add columns to grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -275,7 +273,7 @@ def add_columns():
 # [	remove columns from grid surface (grid warp surfaces only)
 @app.route('/remove_columns')
 def remove_columns():
-    keyboard.write('[')
+    keyboard.write(']')
     info = 'remove columns from grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -283,7 +281,7 @@ def remove_columns():
 # }	add rows to grid surface (grid warp surfaces only)
 @app.route('/add_rows')
 def add_rows():
-    keyboard.write('}')
+    keyboard.write('{')
     info = 'add rows to grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -291,7 +289,7 @@ def add_rows():
 # {	remove rows from grid surface (grid warp surfaces only)
 @app.route('/remove_rows')
 def remove_rows():
-    keyboard.write('{')
+    keyboard.write('}')
     info = 'remove rows from grid surface<br/>(grid warp surfaces only)'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -351,7 +349,7 @@ def layer_down():
 # s	Save composition
 @app.route('/mapper_save')
 def save_mapper():
-    keyboard.write('ss')
+    keyboard.write('s')
     info = 'Saved'
     return render_template('mapper.html', infoText=info,checked='save')
 
@@ -375,7 +373,7 @@ def Undo():
 # rbt	Reboot (Raspberry Pi only)
 @app.route('/reboot')
 def reboot():
-    keyboard.write('ss')
+    keyboard.write('s')
     keyboard.write('rbt')
     info = 'reboooootin wait up!'
     return render_template('mapper.html', infoText=info,checked='mapping')
@@ -384,7 +382,7 @@ def reboot():
 # sdn	Shutdown (Raspberry Pi only)
 @app.route('/shutdown')
 def shudown():
-    keyboard.write('ss')
+    keyboard.write('s')
     keyboard.write('sdn')
     info = 'Saving and Shutting Down!'
     return render_template('mapper.html', infoText=info)
@@ -409,7 +407,7 @@ def ext():
 # BACKSPACE ('' via SSH)	Delete surface.
 @app.route('/delete')
 def BACKSPACE():
-    keyboard.write('backspace')
+    keyboard.send('backspace')
     info = 'Delete surface'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -417,7 +415,7 @@ def BACKSPACE():
 # SPACE	Toggle pause for video sources (texture and projection mapping modes)
 @app.route('/pause')
 def SPACE():
-    keyboard.write('space')
+    keyboard.send('space')
     info = 'Pause'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
@@ -462,7 +460,7 @@ def arrow_right():
 # /	Toggle 1px/10px steps for keyboard moves on Raspberry Pi
 @app.route('/accuracy')
 def accuracy():
-    keyboard.send('space')
+    keyboard.send('/')
     info = 'Toggle 1px/10px steps for keyboard moves on Raspberry Pi'
     return render_template('mapper.html', infoText=info,checked='mapping')
 
