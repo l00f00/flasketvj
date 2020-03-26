@@ -20,8 +20,6 @@ git clone this repo to /home/pi/ besite the ofx folder
 
 `sudo pip3 install flask keyboard subprocess`
 
-TODO:add dependencies from pip [keyboard subprocess etc]
-
 ## Getting started:
 
 - **app.py** is our servlet, which runs using Flask (http://flask.pocoo.org/). Install it by running:
