@@ -1,16 +1,20 @@
-from flask import Flask, render_template, request
+# from flask import Flask, render_template, request, make_response
+from flask import *
 import os
 import subprocess
 import keyboard
+import raspi
 
 app = Flask(__name__)
+# import raspi.pi for GPIO interaction
+raspi = raspi.Raspi()
 
-
+#  mapper mini display
 def mapperInfo():
     info = ''
     return info
 
-
+# information about running process
 def getProcessInfo():
     response = os.popen('top -b -n1').readlines()
     return response[1].split()
@@ -35,55 +39,51 @@ def getHostname():
 
 
 # function that returns memory usage in MBs
-def getMemoryUsage(lineNumber):
-    response = os.popen('free -m').readlines()
-    return response[lineNumber].split()
-
-def checked():
-    checked=''
-    return checked
+# def getMemoryUsage(lineNumber):
+#     response = os.popen('free -m').readlines()
+#     return response[lineNumber].split()
 
 
-# function that returns how long the raspberry pi has been running
-def getUptime():
-    response = os.popen('cat /proc/uptime').readline().split(
-    )  # reads the response as an array of strings for each line
-    minutes = int(float(response[0]) / 60)
-    time = [0, 0, 0]
-    time[0] = int(minutes / 24 / 60)  # get days
-    time[1] = int(minutes / 60 % 24)  # get hours
-    time[2] = minutes % 60  # get minutes
-    return time
+# # function that returns how long the raspberry pi has been running
+# def getUptime():
+#     response = os.popen('cat /proc/uptime').readline().split(
+#     )  # reads the response as an array of strings for each line
+#     minutes = int(float(response[0]) / 60)
+#     time = [0, 0, 0]
+#     time[0] = int(minutes / 24 / 60)  # get days
+#     time[1] = int(minutes / 60 % 24)  # get hours
+#     time[2] = minutes % 60  # get minutes
+#     return time
 
 
-# function that returns disk usage
-def getDiskUsage(lineNumber):
-    response = os.popen('df -h').readlines(
-    )  # reads the response as an array of strings for each line
-    return response[lineNumber].split(
-    )  # splits a specific line into an array of words based on lineNumber
+# # function that returns disk usage
+# def getDiskUsage(lineNumber):
+#     response = os.popen('df -h').readlines(
+#     )  # reads the response as an array of strings for each line
+#     return response[lineNumber].split(
+#     )  # splits a specific line into an array of words based on lineNumber
 
 
-# function that returns cpu temperature in fahrenheit
-def getFahrenheit():
-    response = os.popen('vcgencmd measure_temp').readline(
-    )  # get the response from running the command 'vcgencmd measure_temp'
-    celsius = float(response.replace("temp=", "").replace(
-        "'C\n", ""))  # get rid of 'temp=' and ''C'
-    fahrenheit = round(
-        ((celsius * (9 / 5)) + 32),
-        1)  # convert from fahrenheit to celsius rounded to one decimal place
-    return fahrenheit
+# # function that returns cpu temperature in fahrenheit
+# def getFahrenheit():
+#     response = os.popen('vcgencmd measure_temp').readline(
+#     )  # get the response from running the command 'vcgencmd measure_temp'
+#     celsius = float(response.replace("temp=", "").replace(
+#         "'C\n", ""))  # get rid of 'temp=' and ''C'
+#     fahrenheit = round(
+#         ((celsius * (9 / 5)) + 32),
+#         1)  # convert from fahrenheit to celsius rounded to one decimal place
+#     return fahrenheit
 
 
-# function that returns cpu temperature in celsius
-def getCelsius():
-    response = os.popen('vcgencmd measure_temp').readline(
-    )  # get the response from running the command 'vcgencmd measure_temp'
-    celsius = float(response.replace("temp=", "").replace(
-        "'C\n", ""))  # get rid of 'temp=' and ''C'
-    celsius = round(celsius, 1)  # celsius rounded to one decimal place
-    return celsius
+# # function that returns cpu temperature in celsius
+# def getCelsius():
+#     response = os.popen('vcgencmd measure_temp').readline(
+#     )  # get the response from running the command 'vcgencmd measure_temp'
+#     celsius = float(response.replace("temp=", "").replace(
+#         "'C\n", ""))  # get rid of 'temp=' and ''C'
+#     celsius = round(celsius, 1)  # celsius rounded to one decimal place
+#     return celsius
 
 # def clearconsole():
 #     response = os.system(
@@ -101,20 +101,20 @@ def getCelsius():
 def index():
     return render_template(
         'index.html',
-        fahrenheit=getFahrenheit(),
-        celsius=getCelsius(),
-        diskUsageHeader=getDiskUsage(0),  # array for Disk Usage <th>
-        diskUsageInfo=getDiskUsage(1),  # array for Disk Usage <td>
-        upTime=getUptime(),  # how long the raspberry pi has been running
-        memoryUsageHeader=getMemoryUsage(0),  # array for Memory Usage <th>
-        memoryUsageInfo=getMemoryUsage(1),  # array for Memory Usage <td>
-        memoryUsePercentage=round(
-            float(getMemoryUsage(1)[2]) / float(getMemoryUsage(1)[1]), 4) *
-        100,  # percentage of used Memory
-        #                           userName=getUserName(),
         ipAddress=getIpAddress()[0],
-        hostname=getHostname()[0],
-        processInfo=getProcessInfo())
+        hostname=getHostname()[0])
+
+# Change LED value POST request.
+@app.route("/change_led_status/<int:status>", methods=['POST'])
+def change_led_status(status):
+  # Check the value of the parameter
+  if status == 0:
+    raspi.change_led(False)
+  elif status == 1:
+    raspi.change_led(True)
+  else:
+    return ('Error', 500)
+  return ('', 200)
 
 @app.route('/mapper', methods=['POST', 'GET'])
 def mapper():
@@ -122,48 +122,66 @@ def mapper():
     return render_template('mapper.html',
                            ipAddress=getIpAddress()[0],
                            hostname=getHostname()[0],
-                           infoText=info)  # admin mapper
-
-
-@app.route('/clear_console')
-def clearconsole():
-    keyboard.write('reset')
-    #os.system("sudo reset")
-    info = 'Mapper Killed & CLI CLEARED'
-    return render_template('mapper.html',
-                           ipAddress=getIpAddress()[0],
-                           hostname=getHostname()[0],
-                           infoText=info)  # admin mapper
-
-
+                           infoText=info)
+# return make_response('it worked!', 200, headers)
 #RUN MAPPER
-@app.route('/mapper_run')
+@app.route('/mapper/turn_on/', methods=['POST'])
 def turn_on():
     os.popen(
         "/home/pi/ofx/addons/ofxPiMapper/example_basic/./bin/example_basic -f >/dev/null 2>&1"
     )
-    info = 'Mapper Running'
-    return render_template('mapper.html', infoText=info)
+    infoText = 'Mapper Running'
+    return (infoText, 200)
 
 
 #Kill Mapper
-@app.route('/mapper_kill')
+@app.route('/mapper/turn_off/', methods=['POST'])
 def turn_off():
     os.system("sudo killall -u root -SIGKILL example_basic")
-    info = 'Mapper Killed'
-    return render_template('mapper.html', infoText=info)
+    infoText = 'Mapper Killed'
+    return (infoText, 200)
 
+# clearconsole
+@app.route('/mapper/clearconsole/', methods=['POST'])
+def clearconsole():
+    keyboard.write('reset')
+    keyboard.send('enter')
+    #os.system("sudo reset")
+    infoText = 'Mapper Killed & CLI CLEARED'
+    return (infoText, 200)
 
-# Key	Function
-# def some_view():
-#     return render_template('template.html', checked='home')
+# ext	Exit application and return to command line
+@app.route('/mapper/ext/', methods=['POST'])
+def ext():
+    keyboard.write('ext')
+    # os.system("sudo killall -u root -SIGKILL example_basic")
+    info = 'Exit application and return to command line(while in mappingmode)'
+    return (infoText, 200)
+
+# rbt	Reboot (Raspberry Pi only)
+
+def reboot():
+    keyboard.write('s')
+    keyboard.write('rbt')
+    # os.system("sudo reboot now")
+    info = 'reboooootin wait up!'
+    return (infoText, 200)
+
+# sdn	Shutdown (Raspberry Pi only)
+@app.route('/mapper/shudown/', methods=['POST'])
+def shudown():
+    keyboard.write('s')
+    keyboard.write('sdn')
+    # os.system("sudo shutdown now")
+    info = 'Saving and Shutting Down!'
+    return (infoText, 200)
 
 # 1	Presentation mode
 @app.route('/present_mode')
 def present_mode():
     keyboard.write('1')
     info = 'Presentation mode'
-    return render_template('mapper.html', infoText=info,checked='present')
+    return (infoText, 200)
 
 
 # 2	Texture editing mode
@@ -171,7 +189,7 @@ def present_mode():
 def texture_mode():
     keyboard.write('2')
     info = 'Texture Editing Mode'
-    return render_template('mapper.html', infoText=info,checked='texture')
+    return render_template('mapper.html', infoText=info)
 
 
 # 3	Projection mapping mode, use this to select a surface first
@@ -179,7 +197,7 @@ def texture_mode():
 def mapping_mode():
     keyboard.write('3')
     info = 'Projection mapping mode'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # 4	Source selection mode
@@ -187,7 +205,7 @@ def mapping_mode():
 def source_selection_mode():
     keyboard.write('4')
     info = 'Source selection mode'
-    return render_template('mapper.html', infoText=info,checked='source')
+    return render_template('mapper.html', infoText=info)
 
 
 # i	Show info Controls
@@ -195,7 +213,7 @@ def source_selection_mode():
 def show_controls():
     keyboard.write('i')
     info = 'Show info Controls'
-    return render_template('mapper.html', infoText=info,checked='info')
+    return render_template('mapper.html', infoText=info)
 
 
 # t	Add triangle surface
@@ -203,7 +221,7 @@ def show_controls():
 def add_triangle():
     keyboard.write('t')
     info = 'Addeded Triangle'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # q	Add quad surface
@@ -211,7 +229,7 @@ def add_triangle():
 def add_quad():
     keyboard.write('q')
     info = 'Addeded Quad'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # g	Add grid warp surface
@@ -219,7 +237,7 @@ def add_quad():
 def add_grid():
     keyboard.write('g')
     info = 'Addeded Grid Warp'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # c	Add circle surface
@@ -227,7 +245,7 @@ def add_grid():
 def add_circle():
     keyboard.write('c')
     info = 'Add circle surface'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # d	duplicate selected surface
@@ -235,7 +253,7 @@ def add_circle():
 def duplicate():
     keyboard.write('d')
     info = 'Duplicated Selected Surface'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # +	Scale surface up
@@ -243,7 +261,7 @@ def duplicate():
 def scale_up():
     keyboard.write('+')
     info = 'Scaled surface up +'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # -	Scale surface down
@@ -252,7 +270,7 @@ def scale_up():
 def scale_down():
     keyboard.write('-')
     info = 'Scale surface down -'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # p	toggle perspective warping (quad surfaces only)
@@ -260,7 +278,7 @@ def scale_down():
 def toggle_perspective():
     keyboard.write('p')
     info = 'Toggle perspective warping<br/>(quad surfaces only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # ]	add columns to grid surface (grid warp surfaces only)
@@ -268,7 +286,7 @@ def toggle_perspective():
 def add_columns():
     keyboard.press_and_release(']')
     info = 'add columns to grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # [	remove columns from grid surface (grid warp surfaces only)
@@ -276,7 +294,7 @@ def add_columns():
 def remove_columns():
     keyboard.press_and_release('[')
     info = 'remove columns from grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # }	add rows to grid surface (grid warp surfaces only)
@@ -284,7 +302,7 @@ def remove_columns():
 def add_rows():
     keyboard.write('}')
     info = 'add rows to grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # {	remove rows from grid surface (grid warp surfaces only)
@@ -292,7 +310,7 @@ def add_rows():
 def remove_rows():
     keyboard.write('{')
     info = 'remove rows from grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # .	select next surface (projection mapping mode only)
@@ -300,7 +318,7 @@ def remove_rows():
 def next_surface():
     keyboard.write('.')
     info = 'select next surface<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # ,	select previous surface (projection mapping mode only)
@@ -308,7 +326,7 @@ def next_surface():
 def previous_surface():
     keyboard.write(',')
     info = 'select previous surface<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # >	select next vertex
@@ -316,7 +334,7 @@ def previous_surface():
 def next_vertex():
     keyboard.write('>')
     info = 'select next vertex<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # <	select previous vertex
@@ -324,7 +342,7 @@ def next_vertex():
 def previous_vertex():
     keyboard.write('<')
     info = 'previous next vertex<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # 0	Move selected surface one layer up
@@ -334,7 +352,7 @@ def previous_vertex():
 def layer_up():
     keyboard.write('0')
     info = 'Move selected surface one layer up<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # 9	Move selected surface one layer down
@@ -344,7 +362,7 @@ def layer_up():
 def layer_down():
     keyboard.write('9')
     info = 'Move selected surface one layer down<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # s	Save composition
@@ -352,7 +370,7 @@ def layer_down():
 def save_mapper():
     keyboard.write('ss')
     info = 'Saved'
-    return render_template('mapper.html', infoText=info,checked='save')
+    return render_template('mapper.html', infoText=info)
 
 
 # l	Hide/show layer panel
@@ -360,7 +378,7 @@ def save_mapper():
 def layer_panel():
     keyboard.write('l')
     info = 'Hide/show layer panel'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # z	Undo
@@ -368,25 +386,8 @@ def layer_panel():
 def Undo():
     keyboard.write('z')
     info = 'Undo'
-    return render_template('mapper.html', infoText=info,checked='undo')
-
-
-# rbt	Reboot (Raspberry Pi only)
-@app.route('/reboot')
-def reboot():
-    keyboard.write('s')
-    keyboard.write('rbt')
-    info = 'reboooootin wait up!'
-    return render_template('mapper.html', infoText=info,checked='mapping')
-
-
-# sdn	Shutdown (Raspberry Pi only)
-@app.route('/shutdown')
-def shudown():
-    keyboard.write('s')
-    keyboard.write('sdn')
-    info = 'Saving and Shutting Down!'
     return render_template('mapper.html', infoText=info)
+
 
 
 # new	Clear composition (remove all surfaces)
@@ -394,14 +395,6 @@ def shudown():
 def newcomp():
     keyboard.write('new')
     info = 'Clear composition<br/>(remove all surfaces)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
-
-
-# ext	Exit application and return to command line
-@app.route('/ext')
-def ext():
-    keyboard.write('ext')
-    info = 'Exit application and return to command line'
     return render_template('mapper.html', infoText=info)
 
 
@@ -410,7 +403,7 @@ def ext():
 def BACKSPACE():
     keyboard.send('backspace')
     info = 'Delete surface'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # SPACE	Toggle pause for video sources (texture and projection mapping modes)
@@ -418,7 +411,7 @@ def BACKSPACE():
 def SPACE():
     keyboard.send('space')
     info = 'Pause'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # TAB	Select next source (no need to use the source selection interface)
@@ -426,7 +419,7 @@ def SPACE():
 def next_source():
     keyboard.send('tab')
     info = 'Select next source<br/>(no need to use the source selection interface)'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # Arrow keys	Move selection. If no surface is selected in the projection mapping mode, all surfaces are moved.
@@ -434,28 +427,28 @@ def next_source():
 def arrow_up():
     keyboard.send('up')
     info = 'arrow up'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 @app.route('/arrow_down')
 def arrow_down():
     keyboard.send('down')
     info = 'arrow down'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 @app.route('/arrow_left')
 def arrow_left():
     keyboard.send('left')
     info = 'arrow left'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 @app.route('/arrow_right')
 def arrow_right():
     keyboard.send('right')
     info = 'arrow right'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 # /	Toggle 1px/10px steps for keyboard moves on Raspberry Pi
@@ -463,8 +456,8 @@ def arrow_right():
 def accuracy():
     keyboard.send('/')
     info = 'Toggle 1px/10px steps for keyboard moves on Raspberry Pi'
-    return render_template('mapper.html', infoText=info,checked='mapping')
+    return render_template('mapper.html', infoText=info)
 
 
 if __name__ == '__main__':
-    app.run(debug=checked, host='mapperbox0.local', port=80)
+    app.run(debug=True, host='mapperbox0.local', port=80)

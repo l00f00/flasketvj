@@ -1,208 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
-        <!--Import Google Icon Font-->
-        <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="../static/css/materialize.css" media="screen,projection" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Flasketvj</title>
+
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <link href="{{ url_for('static', filename='css/jumbotron-narrow.css') }}" rel="stylesheet">
     </head>
 
     <body class="red lighten-5">
-
-        <nav class="black lighten-1" role="navigation">
-            <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">
-                    <div class="">
-                        <img src="static/images/pilogo.svg.png" style="width:30px; height:auto" />
-                        <div style="display:inline-block;font-size: small;">pi@{{ hostname }} --> </div>
-                        <div style="display:inline-block;font-size: small;">{{ ipAddress }}</div>
-                    </div>
-                </a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="mapper">Mapper</a></li>
-                </ul>
-                <ul id="nav-mobile" class="side-nav">
-                    <li><a href="#">Mapper</a></li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
-
-
         <div class="container">
-            <div class="section">
-
-                <!--   Icon Section   -->
-                <div class="row">
-
-                    <!-- temperature -->
-                    <div class="col s12 m4">
-                        <div class="icon-block">
-                            <h6 class="center darken-1">Temperature
-                            </h6>
-                            <div class="center">
-                                <!-- Dropdown Trigger -->
-                                <a class='dropdown-button btn' href='#' data-activates='dropdown1'>{{ fahrenheit }}&deg;
-                                    F</a>
-
-                                <!-- Dropdown Structure -->
-                                <ul id='dropdown1' class='dropdown-content'>
-                                    <li><a href="#!">{{ celsius }}&deg; C</a></li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="">
+                <img src="static/images/pilogo.svg.png" style="width:30px; height:auto" />
+                <div style="display:inline-block;font-size: small;">pi@{{ hostname }} --> </div>
+                <div style="display:inline-block;font-size: small;">{{ ipAddress }}</div>
+            </div>
+            <div class="header clearfix">
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation" class="active"><a href="/">Home</a></li>
+                        <li role="presentation"><a href="/mapper">Mapper</a></li>
+                        <li type="button" id="turn_on" class="btn btn-success">Mapper on</li>
+                        <li type="button" id="turn_off" class="btn btn-danger">Mapper off</li>
+                        <li type="button" id="clearconsole" class="btn btn-success">Clear Cli</li>
+                        <li type="button" id="ext" class="btn btn-danger">Ext2Cli</li>
+                        <li type="button" id="reboot" class="btn btn-success">Reboot</li>
+                        <li type="button" id="shudown" class="btn btn-danger">Power off</li>
+                        <li role="presentation"><a href="/about">About</a></li>
+                    </ul>
+                </nav>
+                <div class="jumbotron">
+                    <div class="monitor">
+                        <h1></h1>{{ infoText }}</h1>
                     </div>
-
-                    <!-- disk usage -->
-                    <div class="col s12 m4">
-                        <div class="icon-block">
-                            <h6 class="center light-green-text darken-1">Disk Usage</h6>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th data-field="filesystem">{{ diskUsageHeader[0] }}</th>
-                                        <th data-field="size">{{ diskUsageHeader[1] }}</th>
-                                        <th data-field="used">{{ diskUsageHeader[2] }}</th>
-                                        <th data-field="available">{{ diskUsageHeader[3] }}</th>
-                                        <th data-field="usePercentage">{{ diskUsageHeader[4] }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ diskUsageInfo[0] }}</td>
-                                        <td>{{ diskUsageInfo[1] }}</td>
-                                        <td>{{ diskUsageInfo[2] }}</td>
-                                        <td>{{ diskUsageInfo[3] }}</td>
-                                        <td>{{ diskUsageInfo[4] }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- uptime -->
-                    <div class="col s12 m4">
-                        <div class="icon-block">
-                            <h6 class="center light-green-text darken-1">Uptime</h6>
-                            <h5 class="center">{{ upTime[0] }} Days<br>{{ upTime[1] }} Hours<br>{{ upTime[2] }} Minutes
-                            </h5>
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- second row -->
-                <div class="row">
+                <div class="row marketing">
+                    <div class="col-lg-12">
+                        <h4>Sensor value:</h4>
+                        <p>{{ sensor_value }}</p>
 
-                    <!-- memory usage -->
-                    <div class="col s12 m4">
-                        <div class="icon-block">
-                            <h6 class="center light-green-text darken-1">Memory Usage</h6>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th data-field="total">Size</th>
-                                        <th data-field="used">Used</th>
-                                        <th data-field="free">Avail</th>
-                                        <th data-field="usePercentage">Use %</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ memoryUsageInfo[1] }}MB</td>
-                                        <td>{{ memoryUsageInfo[2] }}MB</td>
-                                        <td>{{ memoryUsageInfo[3] }}MB</td>
-                                        <td>{{ memoryUsePercentage }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Process Info -->
-                    <div class="col s12 m4">
-                        <div class="icon-block">
-                            <h6 class="center light-green-text darken-1">Tasks</h6>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th data-field="total">Total</th>
-                                        <th data-field="used">Running</th>
-                                        <th data-field="sleep">Sleeping</th>
-                                        <th data-field="stopped">Stopped</th>
-                                        <th data-field="zombie">Zombie</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ processInfo[1] }}</td>
-                                        <td>{{ processInfo[3] }}</td>
-                                        <td>{{ processInfo[5] }}</td>
-                                        <td>{{ processInfo[7] }}</td>
-                                        <td>{{ processInfo[9] }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <br>
-            <br>
-
-            <div class="section">
-
-            </div>
-        </div>
-
-        <footer class="page-footer orange">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Flasketvj</h5>
-                        <p class="grey-text text-lighten-4">Flasketvj is a spinoff for controlling ofxPimapper from a
-                            webpage, based on Flask and ofxPimapper Openframeworks</p>
-
-
-                    </div>
-                    <div class="col l3 s12">
-                        <h5 class="white-text">Settings</h5>
-                        <ul>
-                            <li><a class="white-text" href="#!">Link 1</a></li>
-                            <li><a class="white-text" href="#!">Link 2</a></li>
-                        </ul>
-                    </div>
-                    <div class="col l3 s12">
-                        <h5 class="white-text">Connect</h5>
-                        <ul>
-                            <li><a class="white-text" href="#!">Link 1</a></li>
-                            <li><a class="white-text" href="#!">Link 2</a></li>
-                        </ul>
+                        <h4>Change LED</h4>
+                        <p>
+                            <button type="button" id="set_on" class="btn btn-success">Turn on the light</button>
+                            <button type="button" id="set_off" class="btn btn-danger">Turn off the light</button>
+                        </p>
                     </div>
                 </div>
+
+                <footer class="footer">
+                    <p>&copy;Cyberfreak</p>
+                </footer>
+
             </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Made by <a class="orange-text text-lighten-3" href="https://www.cyberfreak.it">Cyberfreak Creative
-                        Studio</a>
-                </div>
-            </div>
-        </footer>
+            <!-- /container -->
 
-
-        <!--  Scripts-->
-
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="../static/js/rpi-status-monitor.js"></script>
-        <script src="../static/js/materialize.js"></script>
-        <!--    <script src="../static/js/rpi-status-monitor.js"></script>-->
-
+            <script src="https://code.jquery.com/jquery-2.2.2.min.js"
+                integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+            <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+            <!-- <script src="{{ url_for('static', filename='js/application.js') }}"></script> -->
+            <script src="{{ url_for('static', filename='js/mapper.js') }}"></script>
     </body>
 
 </html>
