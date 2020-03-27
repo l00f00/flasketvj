@@ -94,15 +94,21 @@ def getHostname():
 # Keyboard Mapper
 # def save_mapper():
 #     mapperSaver = keyboard.write('ss')
-#     return "saved"
+#    return "saved"
 
+# function that returns infoText in monitor
+def getinfoText():
+    infoText=''
+    return infoText
 
 @app.route('/')
 def index():
+    infoText='this is the monitor'
     return render_template(
         'index.html',
         ipAddress=getIpAddress()[0],
-        hostname=getHostname()[0])
+        hostname=getHostname()[0],
+        infoText=infoText)
 
 # Change LED value POST request.
 @app.route("/change_led_status/<int:status>", methods=['POST'])
@@ -175,7 +181,7 @@ def shudown():
     # os.system("sudo shutdown now")
     info = 'Saving and Shutting Down!'
     return (infoText, 200)
-
+#################MapperModes####################
 # 1	Presentation mode
 @app.route('/present_mode')
 def present_mode():
