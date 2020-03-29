@@ -18,7 +18,26 @@ git clone this repo to /home/pi/ besite the ofx folder
 
 `sudo apt-get install python3 python3-pip python3-flask`
 
-`sudo pip3 install flask keyboard subprocess`
+`sudo pip3 install flask keyboard RPi.GPIO flask-ngrok`
+
+## Installing Python3.6 on a Raspberry Pi Couse i want to try with ngrok
+
+`sudo apt-get install python3-dev libffi-dev libssl-dev -y
+
+sudo apt-get install python3-dev libffi-dev libssl-dev -y
+wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz
+tar xJf Python-3.6.3.tar.xz
+cd Python-3.6.3
+./configure
+make
+sudo make install
+sudo pip3 install --upgrade pip
+which python3.6
+sudo nano ~/.bashrc
+alias python3='/usr/local/bin/python3.6'
+source ~/.bashrc
+python -V
+`
 
 ## Getting started:
 

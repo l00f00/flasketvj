@@ -16,36 +16,169 @@
         <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
         <link href="{{ url_for('static', filename='css/jumbotron-narrow.css') }}" rel="stylesheet">
+        <style>
+            body {
+                color: white !important;
+                background-color: black;
+            }
+
+            .navbar-global {
+                background-color: indigo;
+            }
+
+            .navbar-global .navbar-brand {
+                color: white;
+            }
+
+            .navbar-global .navbar-user>li>a {
+                color: white;
+            }
+
+            .navbar-primary {
+                background-color: #333;
+                bottom: 0px;
+                left: 0px;
+                position: relative;
+                min-width: 5vw;
+                width: fit-content;
+                max-width: 15vw;
+                height: 50vh;
+                z-index: 8;
+                overflow: hidden;
+                -webkit-transition: all 0.1s ease-in-out;
+                -moz-transition: all 0.1s ease-in-out;
+                transition: all 0.1s ease-in-out;
+            }
+
+            .navbar-primary.collapsed {
+                width: 60px;
+            }
+
+            .navbar-primary.collapsed .glyphicon {
+                font-size: 22px;
+            }
+
+            .navbar-primary.collapsed .nav-label {
+                display: none;
+            }
+
+            .btn-expand-collapse {
+                position: absolute;
+                display: block;
+                left: 0px;
+                bottom: 0;
+                width: 100%;
+                padding: 8px 0;
+                border-top: solid 1px #666;
+                color: grey;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .btn-expand-collapse:hover,
+            .btn-expand-collapse:focus {
+                background-color: #222;
+                color: white;
+            }
+
+            .btn-expand-collapse:active {
+                background-color: #111;
+            }
+
+            .navbar-primary-menu,
+            .navbar-primary-menu li {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .navbar-primary-menu li a {
+                display: block;
+                padding: 10px 18px;
+                text-align: left;
+                border-bottom: solid 1px #444;
+                color: #ccc;
+            }
+
+            .navbar-primary-menu li a:hover {
+                background-color: #000;
+                text-decoration: none;
+                color: white;
+            }
+
+            .navbar-primary-menu li a .glyphicon {
+                margin-right: 6px;
+            }
+
+            .navbar-primary-menu li a:hover .glyphicon {
+                color: orchid;
+            }
+
+            .main-content {
+                display: flex;
+                float: right;
+                position: relative;
+                min-width: 50vw;
+                width: 75vw;
+                max-width: 75vw;
+            }
+
+            .pressme {}
+        </style>
     </head>
 
-    <body class="red lighten-5">
-        <div class="container">
-            <div class="">
-                <img src="static/images/pilogo.svg.png" style="width:30px; height:auto" />
-                <div style="display:inline-block;font-size: small;">pi@{{ hostname }} --> </div>
-                <div style="display:inline-block;font-size: small;">{{ ipAddress }}</div>
-            </div>
+    <body class="bg-dark text-white">
+        <div class="container-fluid">
             <div class="header clearfix">
-                <nav>
-                    <ul class="nav nav-pills pull-right">
-                        <li role="presentation" class="active"><a href="/">Home</a></li>
-                        <li role="presentation"><a href="/mapper">Mapper</a></li>
+                <nav class="navbar navbar-dark bg-dark text-white">
+                    <ul class="nav nav-pills">
+                        <a href="/" class="navbar-brand" style="padding-top: 0;padding-bottom: 0;">
+                            <img src="static/images/pilogo.svg.png" style="width:auto; height:40px" />
+                        </a>
+                        <div style="display:inline-block;line-height:40px;float:left;font-size: smaller;">
+                            pi@{{ hostname }} --> </div>
+                        <div
+                            style="display:inline-block;line-height:40px;float:left;font-size: smaller;margin-right: 16px;">
+                            {{ ipAddress }}</div>
                         <li type="button" id="turn_on" class="btn btn-success">Mapper on</li>
                         <li type="button" id="turn_off" class="btn btn-danger">Mapper off</li>
-                        <li type="button" id="clearconsole" class="btn btn-success">Clear Cli</li>
-                        <li type="button" id="ext" class="btn btn-danger">Ext2Cli</li>
-                        <li type="button" id="reboot" class="btn btn-success">Reboot</li>
-                        <li type="button" id="shudown" class="btn btn-danger">Power off</li>
-                        <li role="presentation"><a href="/about">About</a></li>
+                        <li type="button" id="clearconsole" class="btn btn-primary">Clear Cli</li>
+                        <li type="button" id="ext" class="btn btn-primary">Ext2Cli</li>
+                        <li type="button" id="reboot" class="btn btn-primary">Reboot</li>
+                        <li type="button" id="shudown" class="btn btn-primary">Power off</li>
                     </ul>
                 </nav>
-                <div class="jumbotron">
+                <div class="jumbotron" style="background-color:darkslategrey!important;">
                     <div class="monitor">
-                        <h1>{{ infoText }}</h1>
+                        <h2 id="monitor" style="background-color:darkslategrey!important;">{{ monitor }}</h2>
                     </div>
                 </div>
-
-                <div class="row marketing">
+                <div id="pressme" class="pressme">
+                    <nav class="navbar-primary">
+                        <a class="btn-expand-collapse"><span class="glyphicon glyphicon-menu-left"></span></a>
+                        <ul class="navbar-primary-menu">
+                            <li>
+                                <a type="button" id="presentation"><span class="glyphicon glyphicon-play"></span><span
+                                        class="nav-label">Presention mode</span></a>
+                                <a type="button" id="mapping"><span class="glyphicon glyphicon-screenshot"></span><span
+                                        class="nav-label">Mapping mode</span></a>
+                                <a type="button" id="texture"><span class="glyphicon glyphicon-cog"></span><span
+                                        class="nav-label">Texture Editing Mode</span></a>
+                                <a type="button" id="source"><span class="glyphicon glyphicon-film"></span><span
+                                        class="nav-label">Source selection mode</span></a>
+                                <a href="#"><span class="glyphicon glyphicon-cog"></span><span
+                                        class="nav-label">Config</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="main-content" style="color:whitesmoke;">
+                        <h1> I am the main content </h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem sint assumenda quae aliquid
+                            voluptatibus quia, ea, ad natus magni repellat earum, culpa iure tempore. Enim dolor eaque
+                            minima voluptas ducimus?</p>
+                    </div>
+                </div>
+                <!-- <div class="row marketing">
                     <div class="col-lg-12">
                         <h4>Sensor value:</h4>
                         <p>{{ sensor_value }}</p>
@@ -56,7 +189,7 @@
                             <button type="button" id="set_off" class="btn btn-danger">Turn off the light</button>
                         </p>
                     </div>
-                </div>
+                </div> -->
 
                 <footer class="footer">
                     <p>&copy;Cyberfreak</p>

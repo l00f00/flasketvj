@@ -1,18 +1,15 @@
 # from flask import Flask, render_template, request, make_response
 from flask import *
 import os
-import subprocess
+# import subprocess
 import keyboard
 import raspi
+# from flask_ngrok import run_with_ngrok
 
 app = Flask(__name__)
 # import raspi.pi for GPIO interaction
 raspi = raspi.Raspi()
-
-#  mapper mini display
-def mapperInfo():
-    info = ''
-    return info
+#run_with_ngrok(app)  # Start ngrok when app is run
 
 # information about running process
 def getProcessInfo():
@@ -97,18 +94,20 @@ def getHostname():
 #    return "saved"
 
 # function that returns infoText in monitor
-def getinfoText():
-    infoText=''
-    return infoText
+#  mapper mini display
+
+# def mapperInfo(infoText):
+#     return infoText
+#   def read_sensor(self):
+#     return GPIO.input(SENSOR_PIN)
 
 @app.route('/')
 def index():
-    infoText='this is the monitor'
+    infoText ='mapper home'
     return render_template(
         'index.html',
         ipAddress=getIpAddress()[0],
-        hostname=getHostname()[0],
-        infoText=infoText)
+        hostname=getHostname()[0])
 
 # Change LED value POST request.
 @app.route("/change_led_status/<int:status>", methods=['POST'])
@@ -122,30 +121,26 @@ def change_led_status(status):
     return ('Error', 500)
   return ('', 200)
 
-@app.route('/mapper', methods=['POST', 'GET'])
-def mapper():
-    info = 'start mapping'
-    return render_template('mapper.html',
-                           ipAddress=getIpAddress()[0],
-                           hostname=getHostname()[0],
-                           infoText=info)
+# @app.route('/mapper', methods=['POST', 'GET'])
+# def mapper():
+#     infoText = 'start mapping'
+#     return render_template('mapper.html',
+#                            ipAddress=getIpAddress()[0],
+#                            hostname=getHostname()[0],
+#                            infoText=mapperInfo(infoText))
 # return make_response('it worked!', 200, headers)
+
 #RUN MAPPER
-@app.route('/mapper/turn_on/', methods=['POST'])
+@app.route('/mapper/turn_on/', methods=['POST', 'GET'])
 def turn_on():
     os.popen(
-        "/home/pi/ofx/addons/ofxPiMapper/example_basic/./bin/example_basic -f >/dev/null 2>&1"
-    )
-    infoText = 'Mapper Running'
-    return (infoText, 200)
-
-
+        "/home/pi/ofx/addons/ofxPiMapper/example_basic/./bin/example_basic -f >/dev/null 2>&1")
+    return ('', 200)
 #Kill Mapper
 @app.route('/mapper/turn_off/', methods=['POST'])
 def turn_off():
     os.system("sudo killall -u root -SIGKILL example_basic")
-    infoText = 'Mapper Killed'
-    return (infoText, 200)
+    return ('', 200)
 
 # clearconsole
 @app.route('/mapper/clearconsole/', methods=['POST'])
@@ -153,317 +148,315 @@ def clearconsole():
     keyboard.write('reset')
     keyboard.send('enter')
     #os.system("sudo reset")
-    infoText = 'Mapper Killed & CLI CLEARED'
-    return (infoText, 200)
+    return ('', 200)
 
 # ext	Exit application and return to command line
 @app.route('/mapper/ext/', methods=['POST'])
 def ext():
     keyboard.write('ext')
     # os.system("sudo killall -u root -SIGKILL example_basic")
-    info = 'Exit application and return to command line(while in mappingmode)'
-    return (infoText, 200)
+    return ('', 200)
 
 # rbt	Reboot (Raspberry Pi only)
-
+@app.route('/mapper/reboot/', methods=['POST'])
 def reboot():
     keyboard.write('s')
     keyboard.write('rbt')
     # os.system("sudo reboot now")
-    info = 'reboooootin wait up!'
-    return (infoText, 200)
+    return ('', 200)
 
 # sdn	Shutdown (Raspberry Pi only)
-@app.route('/mapper/shudown/', methods=['POST'])
-def shudown():
+@app.route('/mapper/shutdown/', methods=['POST'])
+def shutdown():
     keyboard.write('s')
     keyboard.write('sdn')
     # os.system("sudo shutdown now")
-    info = 'Saving and Shutting Down!'
-    return (infoText, 200)
+    return ('', 200)
+
 #################MapperModes####################
 # 1	Presentation mode
-@app.route('/present_mode')
+@app.route('/mapper/present_mode/', methods=['POST'])
 def present_mode():
     keyboard.write('1')
     info = 'Presentation mode'
-    return (infoText, 200)
+    return ('', 200)
 
 
 # 2	Texture editing mode
-@app.route('/texture_mode')
+@app.route('/mapper/texture_mode/', methods=['POST'])
 def texture_mode():
     keyboard.write('2')
     info = 'Texture Editing Mode'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # 3	Projection mapping mode, use this to select a surface first
-@app.route('/mapping_mode')
+@app.route('/mapper/mapping_mode/', methods=['POST'])
 def mapping_mode():
     keyboard.write('3')
     info = 'Projection mapping mode'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # 4	Source selection mode
-@app.route('/source_selection_mode')
+@app.route('/mapper/source_selection_mode/', methods=['POST'])
 def source_selection_mode():
     keyboard.write('4')
     info = 'Source selection mode'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # i	Show info Controls
-@app.route('/show_controls')
+@app.route('/show_controls', methods=['POST'])
 def show_controls():
     keyboard.write('i')
     info = 'Show info Controls'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # t	Add triangle surface
-@app.route('/add_triangle')
+@app.route('/add_triangle', methods=['POST'])
 def add_triangle():
     keyboard.write('t')
     info = 'Addeded Triangle'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # q	Add quad surface
-@app.route('/add_quad')
+@app.route('/add_quad', methods=['POST'])
 def add_quad():
     keyboard.write('q')
     info = 'Addeded Quad'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # g	Add grid warp surface
-@app.route('/add_grid')
+@app.route('/add_grid', methods=['POST'])
 def add_grid():
     keyboard.write('g')
     info = 'Addeded Grid Warp'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # c	Add circle surface
-@app.route('/add_circle')
+@app.route('/add_circle', methods=['POST'])
 def add_circle():
     keyboard.write('c')
     info = 'Add circle surface'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # d	duplicate selected surface
-@app.route('/duplicate')
+@app.route('/duplicate', methods=['POST'])
 def duplicate():
     keyboard.write('d')
     info = 'Duplicated Selected Surface'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # +	Scale surface up
-@app.route('/scale_up')
+@app.route('/scale_up', methods=['POST'])
 def scale_up():
     keyboard.write('+')
     info = 'Scaled surface up +'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # -	Scale surface down
 #NOT WORKING
-@app.route('/scale_down')
+@app.route('/scale_down', methods=['POST'])
 def scale_down():
     keyboard.write('-')
     info = 'Scale surface down -'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # p	toggle perspective warping (quad surfaces only)
-@app.route('/toggle_perspective')
+@app.route('/toggle_perspective', methods=['POST'])
 def toggle_perspective():
     keyboard.write('p')
     info = 'Toggle perspective warping<br/>(quad surfaces only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # ]	add columns to grid surface (grid warp surfaces only)
-@app.route('/add_columns')
+@app.route('/add_columns', methods=['POST'])
 def add_columns():
     keyboard.press_and_release(']')
     info = 'add columns to grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # [	remove columns from grid surface (grid warp surfaces only)
-@app.route('/remove_columns')
+@app.route('/remove_columns', methods=['POST'])
 def remove_columns():
     keyboard.press_and_release('[')
     info = 'remove columns from grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # }	add rows to grid surface (grid warp surfaces only)
-@app.route('/add_rows')
+@app.route('/add_rows', methods=['POST'])
 def add_rows():
     keyboard.write('}')
     info = 'add rows to grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # {	remove rows from grid surface (grid warp surfaces only)
-@app.route('/remove_rows')
+@app.route('/remove_rows', methods=['POST'])
 def remove_rows():
     keyboard.write('{')
     info = 'remove rows from grid surface<br/>(grid warp surfaces only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # .	select next surface (projection mapping mode only)
-@app.route('/next_surface')
+@app.route('/next_surface', methods=['POST'])
 def next_surface():
     keyboard.write('.')
     info = 'select next surface<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # ,	select previous surface (projection mapping mode only)
-@app.route('/previous_surface')
+@app.route('/previous_surface', methods=['POST'])
 def previous_surface():
     keyboard.write(',')
     info = 'select previous surface<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # >	select next vertex
-@app.route('/next_vertex')
+@app.route('/next_vertex', methods=['POST'])
 def next_vertex():
     keyboard.write('>')
     info = 'select next vertex<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # <	select previous vertex
-@app.route('/previous_vertex')
+@app.route('/previous_vertex', methods=['POST'])
 def previous_vertex():
     keyboard.write('<')
     info = 'previous next vertex<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # 0	Move selected surface one layer up
 
 
-@app.route('/layer_up')
+@app.route('/layer_up', methods=['POST'])
 def layer_up():
     keyboard.write('0')
     info = 'Move selected surface one layer up<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # 9	Move selected surface one layer down
 
 
-@app.route('/layer_down')
+@app.route('/layer_down', methods=['POST'])
 def layer_down():
     keyboard.write('9')
     info = 'Move selected surface one layer down<br/>(projection mapping mode only)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # s	Save composition
-@app.route('/mapper_save')
+@app.route('/mapper_save', methods=['POST'])
 def save_mapper():
     keyboard.write('ss')
     info = 'Saved'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # l	Hide/show layer panel
-@app.route('/layer_panel')
+@app.route('/layer_panel', methods=['POST'])
 def layer_panel():
     keyboard.write('l')
     info = 'Hide/show layer panel'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # z	Undo
-@app.route('/Undo')
+@app.route('/Undo', methods=['POST'])
 def Undo():
     keyboard.write('z')
     info = 'Undo'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 
 # new	Clear composition (remove all surfaces)
-@app.route('/newcomp')
+@app.route('/newcomp', methods=['POST'])
 def newcomp():
     keyboard.write('new')
     info = 'Clear composition<br/>(remove all surfaces)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # BACKSPACE ('' via SSH)	Delete surface.
-@app.route('/delete')
+@app.route('/delete', methods=['POST'])
 def BACKSPACE():
     keyboard.send('backspace')
     info = 'Delete surface'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # SPACE	Toggle pause for video sources (texture and projection mapping modes)
-@app.route('/pause')
+@app.route('/pause', methods=['POST'])
 def SPACE():
     keyboard.send('space')
     info = 'Pause'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # TAB	Select next source (no need to use the source selection interface)
-@app.route('/next_source')
+@app.route('/next_source', methods=['POST'])
 def next_source():
     keyboard.send('tab')
     info = 'Select next source<br/>(no need to use the source selection interface)'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # Arrow keys	Move selection. If no surface is selected in the projection mapping mode, all surfaces are moved.
-@app.route('/arrow_up')
+@app.route('/arrow_up', methods=['POST'])
 def arrow_up():
     keyboard.send('up')
     info = 'arrow up'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
-@app.route('/arrow_down')
+@app.route('/arrow_down', methods=['POST'])
 def arrow_down():
     keyboard.send('down')
     info = 'arrow down'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
-@app.route('/arrow_left')
+@app.route('/arrow_left', methods=['POST'])
 def arrow_left():
     keyboard.send('left')
     info = 'arrow left'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
-@app.route('/arrow_right')
+@app.route('/arrow_right', methods=['POST'])
 def arrow_right():
     keyboard.send('right')
     info = 'arrow right'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 # /	Toggle 1px/10px steps for keyboard moves on Raspberry Pi
-@app.route('/accuracy')
+@app.route('/accuracy', methods=['POST'])
 def accuracy():
     keyboard.send('/')
     info = 'Toggle 1px/10px steps for keyboard moves on Raspberry Pi'
-    return render_template('mapper.html', infoText=info)
+    return ('', 200)
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='mapperbox0.local', port=80)
+    app.run(debug=True, host='0.0.0.0', port=80)
+    # app.run()
