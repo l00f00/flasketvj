@@ -3,7 +3,7 @@ from flask import *
 import os
 # import subprocess
 import keyboard
-import raspi
+#import raspi
 # from flask_ngrok import run_with_ngrok
 
 app = Flask(__name__)
