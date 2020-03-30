@@ -50,11 +50,6 @@
             <nav class="navbar-primary">
 
               <ul class="navbar-primary-menu">
-
-                <li>
-                  <a type="button" id="presentation"><span class="glyphicon glyphicon-play"></span><span
-                      class="nav-label">Presention mode</span></a>
-                </li>
                 <li><a type="button" id="mapping"><span class="glyphicon glyphicon-screenshot"></span><span
                       class="nav-label">Mapping mode</span></a>
                 </li>
@@ -63,6 +58,10 @@
                 </li>
                 <li><a type="button" id="source"><span class="glyphicon glyphicon-film"></span><span
                       class="nav-label">Source selection mode</span></a>
+                </li>
+                <li>
+                  <a type="button" id="presentation"><span class="glyphicon glyphicon-play"></span><span
+                      class="nav-label">Presention mode</span></a>
                 </li>
                 <!-- TODO:connect settings wheel -->
                 <li><a><span class="glyphicon glyphicon-cog"></span><span class="nav-label">Config</span></a>
@@ -76,32 +75,34 @@
           </div>
           <!-- TODO:connect buttons -->
           <div class="pressme-content" style="color:whitesmoke;">
-            <div class="pad present_mode">
-              <div class="box pad-1" data-code="1">Corner</div>
-              <div class="box pad-2" data-code="2">Corner</div>
-              <div class="box pad-3" data-code="3">Next vertex</div>
-              <div class="box pad-4" data-code="4">A</div>
-              <div class="box pad-5" data-code="5">A</div>
-              <div class="box pad-6" data-code="6">A</div>
-              <div class="box pad-7" data-code="7">A</div>
-              <div class="box pad-8" data-code="8">A</div>
-              <div class="box pad-9" data-code="9">A</div>
-              <div class="box pad-10" data-code="10">A</div>
-            </div>
             <div class="pad mapping_mode">
-              <div class="box pad-1" data-code="1">Corner</div>
-              <div class="box pad-2" data-code="2">Corner</div>
-              <div class="box pad-3" data-code="3">Next vertex</div>
-              <div class="box pad-4" data-code="4">A</div>
-              <div class="box pad-5" data-code="5">A</div>
-              <div class="box pad-6" data-code="6">A</div>
-              <div class="box pad-7" data-code="7">A</div>
-              <div class="box pad-8" data-code="8">A</div>
-              <div class="box pad-9" data-code="9">A</div>
-              <div class="box pad-10" data-code="10">A</div>
+              <div class="box add_grid">🗺️ Grid</div>
+              <div class="box add_quad">🟥 Quad</div>
+              <div class="box add_triangle">🔺 Tria</div>
+              <div class="box add_circle">🔴 Circ</div>
+              <div class="box duplicate">✖️2</div>
+              <div class="box scale_up glyphicon glyphicon-resize-small">➖</div>
+              <div class="box scale_down glyphicon glyphicon-resize-full">➕</div>
+              <div class="box previous_surface glyphicon glyphicon-step-backward">🗺️</div>
+              <div class="box next_surface glyphicon glyphicon-step-forward">🗺️</div>
+              <div class="box remove_columns glyphicon glyphicon-object-align-top">➖</div>
+              <div class="box add_columns glyphicon glyphicon-object-align-top">➕</div>
+              <div class="box remove_rows glyphicon glyphicon-object-align-left">➖</div>
+              <div class="box add_rows glyphicon glyphicon-object-align-left">➕</div>
+              <div class="box previous_vertex">
+                <div class="glyphicon glyphicon-chevron-left">
+                </div>
+                Vertex
+              </div>
+              <div class="box next_vertex">Vertex
+                <div class="glyphicon glyphicon-chevron-right">
+                </div>
+              </div>
+              <div class="box layer_down glyphicon glyphicon-chevron-down">Layer</div>
+              <div class="box layer_up glyphicon glyphicon-chevron-top">Layer</div>
             </div>
             <div class="pad texture_mode">
-              <div class="box pad-1" data-code="1">Corner</div>
+              <div class="box pad-1" data-code="1">texture</div>
               <div class="box pad-2" data-code="2">Corner</div>
               <div class="box pad-3" data-code="3">Next vertex</div>
               <div class="box pad-4" data-code="4">A</div>
@@ -113,7 +114,7 @@
               <div class="box pad-10" data-code="10">A</div>
             </div>
             <div class="pad source_selection_mode">
-              <div class="box pad-1" data-code="1">Corner</div>
+              <div class="box pad-1" data-code="1">source</div>
               <div class="box pad-2" data-code="2">Corner</div>
               <div class="box pad-3" data-code="3">Next vertex</div>
               <div class="box pad-4" data-code="4">A</div>
@@ -125,7 +126,31 @@
               <div class="box pad-10" data-code="10">A</div>
             </div>
             <div class="pad texture_mode">
-              <div class="box pad-1" data-code="1">Corner</div>
+              <div class="box pad-1" data-code="1">texture</div>
+              <div class="box pad-2" data-code="2">Corner</div>
+              <div class="box pad-3" data-code="3">Next vertex</div>
+              <div class="box pad-4" data-code="4">A</div>
+              <div class="box pad-5" data-code="5">A</div>
+              <div class="box pad-6" data-code="6">A</div>
+              <div class="box pad-7" data-code="7">A</div>
+              <div class="box pad-8" data-code="8">A</div>
+              <div class="box pad-9" data-code="9">A</div>
+              <div class="box pad-10" data-code="10">A</div>
+            </div>
+            <div class="pad present_mode">
+              <div class="box pad-1" data-code="1">present_mode</div>
+              <div class="box pad-2" data-code="2">Corner</div>
+              <div class="box pad-3" data-code="3">Next vertex</div>
+              <div class="box pad-4" data-code="4">A</div>
+              <div class="box pad-5" data-code="5">A</div>
+              <div class="box pad-6" data-code="6">A</div>
+              <div class="box pad-7" data-code="7">A</div>
+              <div class="box pad-8" data-code="8">A</div>
+              <div class="box pad-9" data-code="9">A</div>
+              <div class="box pad-10" data-code="10">A</div>
+            </div>
+            <div class="pad config_mode">
+              <div class="box pad-1" data-code="1">Config</div>
               <div class="box pad-2" data-code="2">Corner</div>
               <div class="box pad-3" data-code="3">Next vertex</div>
               <div class="box pad-4" data-code="4">A</div>
