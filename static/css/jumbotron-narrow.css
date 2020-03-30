@@ -77,3 +77,172 @@ body {
     border-bottom: 0;
   }
 }
+
+body {
+  color: white !important;
+  background-color: black;
+}
+
+.navbar-global {
+  background-color: indigo;
+}
+
+.navbar-global .navbar-brand {
+  color: white;
+}
+
+.navbar-global .navbar-user > li > a {
+  color: white;
+}
+
+.navbar-primary {
+  background-color: #333;
+  bottom: 0px;
+  left: 0px;
+  position: relative;
+  min-width: 5vw;
+  width: fit-content;
+  max-width: 15vw;
+  height: 50vh;
+  z-index: 8;
+  overflow: hidden;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.navbar-primary.collapsed {
+  width: 2em;
+}
+
+.navbar-primary.collapsed .glyphicon {
+  font-size: 22px;
+}
+
+.navbar-primary.collapsed .nav-label {
+  display: none;
+}
+
+.btn-expand-collapse {
+  position: absolute;
+  display: block;
+  left: 0px;
+  bottom: 0;
+  width: 100%;
+  padding: 8px 0;
+  border-top: solid 1px #666;
+  color: grey;
+  font-size: 20px;
+  text-align: center;
+}
+
+.btn-expand-collapse:hover,
+.btn-expand-collapse:focus {
+  background-color: #222;
+  color: white;
+}
+
+.btn-expand-collapse:active {
+  background-color: #111;
+}
+
+.navbar-primary-menu,
+.navbar-primary-menu li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-primary-menu li a {
+  display: block;
+  padding: 10px 18px;
+  text-align: left;
+  border-bottom: solid 1px #444;
+  color: #ccc;
+}
+
+.navbar-primary-menu li a:hover {
+  background-color: #000;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-primary-menu li a .glyphicon {
+  margin-right: 6px;
+}
+
+.navbar-primary-menu li a:hover .glyphicon {
+  color: orchid;
+}
+.pressme {
+  /* cool */
+  display: inline-flex;
+}
+.pressme-bar {
+  /* cool */
+  order: 1;
+}
+.pressme-content {
+  /* cool */
+  order: 2;
+  margin: 30px;
+}
+.pad {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+  box-shadow: 0 8px 6px -6px black;
+  background-color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.4);
+  user-select: none;
+}
+.box:hover {
+  background-color: lighten(#444, 10%);
+  cursor: pointer;
+}
+
+.box:active {
+  background-color: darken(#444, 10%);
+  transform: scale(1.1);
+  transition: all 0.2s;
+}
+
+.active {
+  background-color: darken(#444, 10%);
+  transform: scale(1.1);
+  transition: all 0.2s;
+}
+
+.pad-1,
+.pad-2,
+.pad-3,
+.pad-4 {
+  border: 2px solid #852ecc;
+  border-radius: 3px;
+  margin: 4px 4px;
+}
+
+.pad-5,
+.pad-6,
+.pad-7,
+.pad-8 {
+  border: 2px solid #e5446d;
+}
+
+.pad-9,
+.pad-10,
+.pad-11,
+.pad-12 {
+  border: 2px solid #1abc9c;
+}
