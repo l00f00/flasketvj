@@ -384,7 +384,7 @@ def save_mapper():
     info = "Saved"
     return ("", 200)
 
-
+#DONE: add layer panel
 # l	Hide/show layer panel
 @app.route("/mapper/layer_panel/", methods=["POST"])
 def layer_panel():
@@ -394,7 +394,7 @@ def layer_panel():
 
 
 # z	Undo
-@app.route("/mapper/Undo/", methods=["POST"])
+@app.route("/mapper/undo/", methods=["POST"])
 def Undo():
     keyboard.write("z")
     info = "Undo"
@@ -421,7 +421,7 @@ def BACKSPACE():
 @app.route("/mapper/pause/", methods=["POST"])
 def SPACE():
     keyboard.send("space")
-    info = "Pause"
+    info = "pause"
     return ("", 200)
 
 

@@ -76,10 +76,17 @@
           <!-- TODO:connect buttons -->
           <div class="pressme-content" style="color:whitesmoke;">
             <div class="pad mapping_mode">
+              <div class="box mapper_save glyphicon glyphicon-floppy-save">Save</div>
+              <div class="box add_quad">🟥 Quad</div>
               <div class="box add_grid">🗺️ Grid</div>
               <div class="box add_quad">🟥 Quad</div>
               <div class="box add_triangle">🔺 Tria</div>
               <div class="box add_circle">🔴 Circ</div>
+
+              <div class="box newcomp glyphicon glyphicon-floppy-remove"> 🆕</div>
+              <div class="box delete">DEL ❌</div>
+              <div class="box undo">ctrl+Z 🦄</div>
+              <div class="box pause"> ⏹️ ▶️ </div>
               <div class="box duplicate">✖️2</div>
               <div class="box scale_up glyphicon glyphicon-resize-small">➖</div>
               <div class="box scale_down glyphicon glyphicon-resize-full">➕</div>
@@ -98,56 +105,42 @@
                 <div class="glyphicon glyphicon-chevron-right">
                 </div>
               </div>
+              <div class="box layer_panel glyphicon glyphicon-unchecked">Layer Panel</div>
               <div class="box layer_down glyphicon glyphicon-chevron-down">Layer</div>
-              <div class="box layer_up glyphicon glyphicon-chevron-top">Layer</div>
+              <div class="box layer_up glyphicon glyphicon-chevron-up">Layer</div>
+              <div class="box next_source glyphicon glyphicon-arrow-right">Next Source</div>
+              <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
+            </div>
+            <div class="pad mapping_mode">
+              <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+            </div>
+            <div class="pad mapping_mode">
+              <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
+              <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+            </div>
+            <div class="pad mapping_mode">
+              <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
             </div>
             <div class="pad texture_mode">
-              <div class="box pad-1" data-code="1">texture</div>
-              <div class="box pad-2" data-code="2">Corner</div>
-              <div class="box pad-3" data-code="3">Next vertex</div>
-              <div class="box pad-4" data-code="4">A</div>
-              <div class="box pad-5" data-code="5">A</div>
-              <div class="box pad-6" data-code="6">A</div>
-              <div class="box pad-7" data-code="7">A</div>
-              <div class="box pad-8" data-code="8">A</div>
-              <div class="box pad-9" data-code="9">A</div>
-              <div class="box pad-10" data-code="10">A</div>
+              <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
+              <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+              <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+              <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
+              <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
             </div>
             <div class="pad source_selection_mode">
-              <div class="box pad-1" data-code="1">source</div>
-              <div class="box pad-2" data-code="2">Corner</div>
-              <div class="box pad-3" data-code="3">Next vertex</div>
-              <div class="box pad-4" data-code="4">A</div>
-              <div class="box pad-5" data-code="5">A</div>
-              <div class="box pad-6" data-code="6">A</div>
-              <div class="box pad-7" data-code="7">A</div>
-              <div class="box pad-8" data-code="8">A</div>
-              <div class="box pad-9" data-code="9">A</div>
-              <div class="box pad-10" data-code="10">A</div>
-            </div>
-            <div class="pad texture_mode">
-              <div class="box pad-1" data-code="1">texture</div>
-              <div class="box pad-2" data-code="2">Corner</div>
-              <div class="box pad-3" data-code="3">Next vertex</div>
-              <div class="box pad-4" data-code="4">A</div>
-              <div class="box pad-5" data-code="5">A</div>
-              <div class="box pad-6" data-code="6">A</div>
-              <div class="box pad-7" data-code="7">A</div>
-              <div class="box pad-8" data-code="8">A</div>
-              <div class="box pad-9" data-code="9">A</div>
-              <div class="box pad-10" data-code="10">A</div>
+              <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
+              <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+              <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+              <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
+              <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
             </div>
             <div class="pad present_mode">
-              <div class="box pad-1" data-code="1">present_mode</div>
-              <div class="box pad-2" data-code="2">Corner</div>
-              <div class="box pad-3" data-code="3">Next vertex</div>
-              <div class="box pad-4" data-code="4">A</div>
-              <div class="box pad-5" data-code="5">A</div>
-              <div class="box pad-6" data-code="6">A</div>
-              <div class="box pad-7" data-code="7">A</div>
-              <div class="box pad-8" data-code="8">A</div>
-              <div class="box pad-9" data-code="9">A</div>
-              <div class="box pad-10" data-code="10">A</div>
+              <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
+              <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+              <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+              <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
+              <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
             </div>
             <div class="pad config_mode">
               <div class="box pad-1" data-code="1">Config</div>

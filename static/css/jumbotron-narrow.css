@@ -205,7 +205,7 @@ body {
 
 .pressme {
   /* cool */
-  display: inline-flex;
+  display: flex;
 }
 
 .pressme-bar {
@@ -220,24 +220,25 @@ body {
 
 .pad {
   width: 100%;
-  min-width: 90vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .box {
-  width: calc(80vw/10);
+  width: calc(80vw/8);
   /* max-width: 60px; */
-  height: 60px;
+  height: calc(80vw/8);
   box-shadow: 0 8px 6px -6px whitesmoke;
   background-color: #444;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size:smaller;
   color: rgba(255, 255, 255, 0.4);
   user-select: none;
+  border: 2px solid #852ecc;
+  border-radius: 3px;
 }
 
 .box:hover {
