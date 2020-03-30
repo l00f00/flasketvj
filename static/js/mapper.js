@@ -1,6 +1,7 @@
 
 // implement methods for mapper via jquery post request
 $(document).ready(function () {
+  $('.navbar-primary').addClass('collapsed');
   // hide all pads by default
   $('.pad').hide();
 
@@ -118,6 +119,10 @@ $(document).ready(function () {
   $('.previous_surface').click(function () {
     $.post('/mapper/previous_surface/');
     $('#monitor').html("select previous surface");
+  });
+  $('.previous_vertex').click(function () {
+    $.post('/mapper/previous_vertex/');
+    $('#monitor').html("select previous vertex");
   });
   $('.next_vertex').click(function () {
     $.post('/mapper/next_vertex/');

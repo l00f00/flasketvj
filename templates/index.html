@@ -39,125 +39,122 @@
             <li type="button" id="reboot" class="btn btn-primary">Reboot</li>
             <li type="button" id="shudown" class="btn btn-primary">Power off</li>
           </ul>
+          <div class="jumbotron" style="background-color:darkslategrey!important;">
+            <div class="monitor">
+              <h2 id="monitor" style="background-color:darkslategrey!important;">{{ monitor }}</h2>
+            </div>
+          </div>
         </nav>
-        <div class="jumbotron" style="background-color:darkslategrey!important;">
-          <div class="monitor">
-            <h2 id="monitor" style="background-color:darkslategrey!important;">{{ monitor }}</h2>
-          </div>
+      </div>
+      <div id="pressme" class="pressme">
+        <div id="pressme-bar" class="pressme-bar">
+          <nav class="navbar-primary">
+
+            <ul class="navbar-primary-menu">
+              <li><a type="button" id="mapping"><span class="glyphicon glyphicon-screenshot"></span><span
+                    class="nav-label">Mapping mode</span></a>
+              </li>
+              <li><a type="button" id="texture"><span class="glyphicon glyphicon-cog"></span><span
+                    class="nav-label">Texture Editing Mode</span></a>
+              </li>
+              <li><a type="button" id="source"><span class="glyphicon glyphicon-film"></span><span
+                    class="nav-label">Source selection mode</span></a>
+              </li>
+              <li>
+                <a type="button" id="presentation"><span class="glyphicon glyphicon-play"></span><span
+                    class="nav-label">Presention mode</span></a>
+              </li>
+              <!-- TODO:connect settings wheel -->
+              <li><a><span class="glyphicon glyphicon-cog"></span><span class="nav-label">Config</span></a>
+              </li>
+              <!-- TODO:connect settings wheel -->
+              <li>
+                <a class="btn-expand-collapse"><span class="arrow glyphicon glyphicon-menu-left"></span></a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <div id="pressme" class="pressme">
-          <div id="pressme-bar" class="pressme-bar">
-            <nav class="navbar-primary">
-
-              <ul class="navbar-primary-menu">
-                <li><a type="button" id="mapping"><span class="glyphicon glyphicon-screenshot"></span><span
-                      class="nav-label">Mapping mode</span></a>
-                </li>
-                <li><a type="button" id="texture"><span class="glyphicon glyphicon-cog"></span><span
-                      class="nav-label">Texture Editing Mode</span></a>
-                </li>
-                <li><a type="button" id="source"><span class="glyphicon glyphicon-film"></span><span
-                      class="nav-label">Source selection mode</span></a>
-                </li>
-                <li>
-                  <a type="button" id="presentation"><span class="glyphicon glyphicon-play"></span><span
-                      class="nav-label">Presention mode</span></a>
-                </li>
-                <!-- TODO:connect settings wheel -->
-                <li><a><span class="glyphicon glyphicon-cog"></span><span class="nav-label">Config</span></a>
-                </li>
-                <!-- TODO:connect settings wheel -->
-                <li>
-                  <a class="btn-expand-collapse"><span class="arrow glyphicon glyphicon-menu-left"></span></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <!-- TODO:connect buttons -->
-          <div class="pressme-content" style="color:whitesmoke;">
-            <div class="pad mapping_mode">
-              <div class="box mapper_save glyphicon glyphicon-floppy-save">Save</div>
-              <div class="box add_quad">🟥 Quad</div>
-              <div class="box add_grid">🗺️ Grid</div>
-              <div class="box add_quad">🟥 Quad</div>
-              <div class="box add_triangle">🔺 Tria</div>
-              <div class="box add_circle">🔴 Circ</div>
-
-              <div class="box newcomp glyphicon glyphicon-floppy-remove"> 🆕</div>
-              <div class="box delete">DEL ❌</div>
-              <div class="box undo">ctrl+Z 🦄</div>
-              <div class="box pause"> ⏹️ ▶️ </div>
-              <div class="box duplicate">✖️2</div>
-              <div class="box scale_up glyphicon glyphicon-resize-small">➖</div>
-              <div class="box scale_down glyphicon glyphicon-resize-full">➕</div>
-              <div class="box previous_surface glyphicon glyphicon-step-backward">🗺️</div>
-              <div class="box next_surface glyphicon glyphicon-step-forward">🗺️</div>
-              <div class="box remove_columns glyphicon glyphicon-object-align-top">➖</div>
-              <div class="box add_columns glyphicon glyphicon-object-align-top">➕</div>
-              <div class="box remove_rows glyphicon glyphicon-object-align-left">➖</div>
-              <div class="box add_rows glyphicon glyphicon-object-align-left">➕</div>
-              <div class="box previous_vertex">
-                <div class="glyphicon glyphicon-chevron-left">
-                </div>
-                Vertex
+        <!-- TODO:connect buttons -->
+        <div class="pressme-content" style="color:whitesmoke;">
+          <div class="pad mapping_mode">
+            <div class="box mapper_save glyphicon glyphicon-floppy-save">Save</div>
+            <div class="box add_grid">🗺️ Grid</div>
+            <div class="box add_quad">🟥 Quad</div>
+            <div class="box add_triangle">🔺 Tria</div>
+            <div class="box add_circle">🔴 Circ</div>
+            <div class="box newcomp glyphicon glyphicon-floppy-remove"> 🆕</div>
+            <div class="box delete">DEL ❌</div>
+            <div class="box undo">ctrl+Z 🦄</div>
+            <div class="box pause"> ⏹️ ▶️ </div>
+            <div class="box duplicate">✖️2</div>
+            <div class="box scale_up glyphicon glyphicon-resize-small">➖</div>
+            <div class="box scale_down glyphicon glyphicon-resize-full">➕</div>
+            <div class="box previous_surface glyphicon glyphicon-step-backward">🗺️</div>
+            <div class="box next_surface glyphicon glyphicon-step-forward">🗺️</div>
+            <div class="box remove_columns glyphicon glyphicon-object-align-top">➖</div>
+            <div class="box add_columns glyphicon glyphicon-object-align-top">➕</div>
+            <div class="box remove_rows glyphicon glyphicon-object-align-left">➖</div>
+            <div class="box add_rows glyphicon glyphicon-object-align-left">➕</div>
+            <div class="box previous_vertex">
+              <div class="glyphicon glyphicon-chevron-left">
               </div>
-              <div class="box next_vertex">Vertex
-                <div class="glyphicon glyphicon-chevron-right">
-                </div>
+              Vertex
+            </div>
+            <div class="box next_vertex">Vertex
+              <div class="glyphicon glyphicon-chevron-right">
               </div>
-              <div class="box layer_panel glyphicon glyphicon-unchecked">Layer Panel</div>
-              <div class="box layer_down glyphicon glyphicon-chevron-down">Layer</div>
-              <div class="box layer_up glyphicon glyphicon-chevron-up">Layer</div>
-              <div class="box next_source glyphicon glyphicon-arrow-right">Next Source</div>
-              <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
             </div>
-            <div class="pad mapping_mode">
-              <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
-            </div>
-            <div class="pad mapping_mode">
-              <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
-              <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
-            </div>
-            <div class="pad mapping_mode">
-              <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
-            </div>
-            <div class="pad texture_mode">
-              <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
-              <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
-              <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
-              <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
-              <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
-            </div>
-            <div class="pad source_selection_mode">
-              <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
-              <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
-              <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
-              <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
-              <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
-            </div>
-            <div class="pad present_mode">
-              <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
-              <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
-              <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
-              <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
-              <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
-            </div>
-            <div class="pad config_mode">
-              <div class="box pad-1" data-code="1">Config</div>
-              <div class="box pad-2" data-code="2">Corner</div>
-              <div class="box pad-3" data-code="3">Next vertex</div>
-              <div class="box pad-4" data-code="4">A</div>
-              <div class="box pad-5" data-code="5">A</div>
-              <div class="box pad-6" data-code="6">A</div>
-              <div class="box pad-7" data-code="7">A</div>
-              <div class="box pad-8" data-code="8">A</div>
-              <div class="box pad-9" data-code="9">A</div>
-              <div class="box pad-10" data-code="10">A</div>
-            </div>
-
+            <div class="box layer_panel glyphicon glyphicon-unchecked">Layer Panel</div>
+            <div class="box layer_down glyphicon glyphicon-chevron-down">Layer</div>
+            <div class="box layer_up glyphicon glyphicon-chevron-up">Layer</div>
+            <div class="box next_source glyphicon glyphicon-arrow-right">Next Source</div>
+            <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
           </div>
+          <div class="pad mapping_mode">
+            <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+          </div>
+          <div class="pad mapping_mode">
+            <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
+            <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
+            <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+          </div>
+          <div class="pad texture_mode">
+            <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
+            <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+            <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+            <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
+            <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
+          </div>
+          <div class="pad source_selection_mode">
+            <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
+            <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+            <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+            <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
+            <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
+          </div>
+          <div class="pad present_mode">
+            <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
+            <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+            <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+            <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
+            <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
+          </div>
+          <div class="pad config_mode">
+            <div class="box pad-1" data-code="1">Config</div>
+            <div class="box pad-2" data-code="2">Corner</div>
+            <div class="box pad-3" data-code="3">Next vertex</div>
+            <div class="box pad-4" data-code="4">A</div>
+            <div class="box pad-5" data-code="5">A</div>
+            <div class="box pad-6" data-code="6">A</div>
+            <div class="box pad-7" data-code="7">A</div>
+            <div class="box pad-8" data-code="8">A</div>
+            <div class="box pad-9" data-code="9">A</div>
+            <div class="box pad-10" data-code="10">A</div>
+          </div>
+
         </div>
-        <!-- <div class="row marketing">
+      </div>
+      <!-- <div class="row marketing">
                     <div class="col-lg-12">
                         <h4>Sensor value:</h4>
                         <p>{{ sensor_value }}</p>
@@ -170,17 +167,17 @@
                     </div>
                 </div> -->
 
-        <footer class="footer">
-          <p>Cyberfreak Creative Studio @ l00f00</p>
-        </footer>
-      </div>
-      <!-- /container -->
+      <footer class="footer">
+        <p>Cyberfreak Creative Studio @ l00f00</p>
+      </footer>
+    </div>
+    <!-- /container -->
 
-      <script src="https://code.jquery.com/jquery-2.2.2.min.js"
-        integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
-      <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-      <!-- <script src="{{ url_for('static', filename='js/application.js') }}"></script> -->
-      <script src="{{ url_for('static', filename='js/mapper.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js"
+      integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+    <!-- <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/application.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/mapper.js') }}"></script>
   </body>
 
 </html>
