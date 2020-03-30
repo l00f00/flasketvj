@@ -4,6 +4,10 @@ $(document).ready(function () {
   $('.btn-expand-collapse').click(function (e) {
     $('.navbar-primary').toggleClass('collapsed');
   });
+  $('.btn-expand-collapse').click(function (e) {
+    $('.arrow').toggleClass('glyphicon-menu-left');
+    $('.arrow').toggleClass('glyphicon-menu-right');
+  });
   $('#turn_on').click(function () {
     $.post('/mapper/turn_on/');
     $('#monitor').html("Mapper Running")
@@ -39,6 +43,10 @@ $(document).ready(function () {
   $('#texture').click(function () {
     $.post('/mapper/texture_mode/');
     $('#monitor').html("Texture Editing Mode")
+  });
+  $('#source').click(function () {
+    $.post('/mapper/source_selection_mode/');
+    $('#monitor').html("Source selection mode")
   });
   $('#source').click(function () {
     $.post('/mapper/source_selection_mode/');
