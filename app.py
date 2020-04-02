@@ -1,10 +1,8 @@
 # from flask import Flask, render_template, request, make_response
 from flask import *
 import os
-
 # import subprocess
 import keyboard
-
 # import raspi
 # from flask_ngrok import run_with_ngrok
 
@@ -469,7 +467,11 @@ def accuracy():
     info = "Toggle 1px/10px steps for keyboard moves on Raspberry Pi"
     return ("", 200)
 
-
+#flaskdev
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=80)
-    # app.run()
+#	app.run(debug=True, host="0.0.0.0", port=80)
+#     app.run()
+#	serve(app)
+#gnunicorn
+    if __name__ == '__main__':
+        app.run(debug=True,host='0.0.0.0')

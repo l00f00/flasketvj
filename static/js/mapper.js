@@ -63,7 +63,7 @@ $(document).ready(function () {
   //TODO:config
   $('#config_mode').click(function () {
     $.post('/mapper/config_mode/');
-    $('#monitor').html("Source selection mode");
+    $('#monitor').html("Config mode");
     $('.pad').toggle(false);
     $('.config_mode').toggle(true);
   });

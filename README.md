@@ -16,9 +16,9 @@ git clone this repo to /home/pi/ besite the ofx folder
 
 ## Install dependencies
 
-`sudo apt-get install python3 python3-pip python3-flask`
+`sudo apt-get install python3 python3-pip python3-flask python3-dev nginx`
 
-`sudo pip3 install flask keyboard RPi.GPIO flask-ngrok`
+`sudo pip3 install flask keyboard RPi.GPIO flask-ngrok gunicorn uwsgi`
 
 ## Installing Python3.6 on a Raspberry Pi Couse i want to try with ngrok
 
@@ -38,6 +38,9 @@ alias python3='/usr/local/bin/python3.6'
 source ~/.bashrc
 python -V
 `
+
+## configure nginx
+https://www.e-tinkers.com/2018/08/how-to-properly-host-flask-application-with-nginx-and-guincorn/
 
 ## Getting started:
 
@@ -78,3 +81,7 @@ python -V
 - ">&"re-directs output of one file to another.
 - You can re-direct error using its corresponding File Descriptor 2.
   https://www.guru99.com/linux-redirection.html
+
+## TODO
+-switch access point - client - no wifi with Gpio buttons
+ https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/158-raspberry-pi-auto-wifi-hotspot-switch-direct-connection

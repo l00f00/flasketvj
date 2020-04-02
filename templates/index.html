@@ -32,12 +32,6 @@
             <div style="display:inline-block;line-height:40px;float:left;font-size: smaller;margin-right: 16px;">
               {{ ipAddress }}
             </div>
-            <li type="button" id="turn_on" class="btn btn-success">Mapper on</li>
-            <li type="button" id="turn_off" class="btn btn-danger">Mapper off</li>
-            <li type="button" id="clearconsole" class="btn btn-primary">Clear Cli</li>
-            <li type="button" id="ext" class="btn btn-primary">Ext2Cli</li>
-            <li type="button" id="reboot" class="btn btn-primary">Reboot</li>
-            <li type="button" id="shudown" class="btn btn-primary">Power off</li>
           </ul>
           <div class="jumbotron" style="background-color:darkslategrey!important;">
             <div class="monitor">
@@ -65,7 +59,8 @@
                     class="nav-label">Presention mode</span></a>
               </li>
               <!-- TODO:connect settings wheel -->
-              <li><a><span class="glyphicon glyphicon-cog"></span><span class="nav-label">Config</span></a>
+              <li><a type="button" id="config_mode"><span class="glyphicon glyphicon-cog"></span><span
+                    class="nav-label">Config</span></a>
               </li>
               <!-- TODO:connect settings wheel -->
               <li>
@@ -96,13 +91,9 @@
             <div class="box remove_rows glyphicon glyphicon-object-align-left">➖</div>
             <div class="box add_rows glyphicon glyphicon-object-align-left">➕</div>
             <div class="box previous_vertex">
-              <div class="glyphicon glyphicon-chevron-left">
-              </div>
-              Vertex
+              <div class="glyphicon glyphicon-chevron-left"></div>Vertex
             </div>
-            <div class="box next_vertex">Vertex
-              <div class="glyphicon glyphicon-chevron-right">
-              </div>
+            <div class="box next_vertex">Vertex<div class="glyphicon glyphicon-chevron-right"></div>
             </div>
             <div class="box layer_panel glyphicon glyphicon-unchecked">Layer Panel</div>
             <div class="box layer_down glyphicon glyphicon-chevron-down">Layer</div>
@@ -139,17 +130,21 @@
             <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
             <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
           </div>
+          <div class="pad present_mode">
+            <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
+            <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+            <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+            <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
+            <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
+          </div>
           <div class="pad config_mode">
-            <div class="box pad-1" data-code="1">Config</div>
-            <div class="box pad-2" data-code="2">Corner</div>
-            <div class="box pad-3" data-code="3">Next vertex</div>
-            <div class="box pad-4" data-code="4">A</div>
-            <div class="box pad-5" data-code="5">A</div>
-            <div class="box pad-6" data-code="6">A</div>
-            <div class="box pad-7" data-code="7">A</div>
-            <div class="box pad-8" data-code="8">A</div>
-            <div class="box pad-9" data-code="9">A</div>
-            <div class="box pad-10" data-code="10">A</div>
+            <div class="box pad-1">Config</div>
+            <div type="button" id="turn_on" class="box btn btn-success">Mapper on</div>
+            <div type="button" id="turn_off" class="box btn btn-danger">Mapper off</div>
+            <div type="button" id="clearconsole" class="box btn btn-primary">Clear Cli</div>
+            <div type="button" id="ext" class="box btn btn-primary">Ext 2 Cli</div>
+            <div type="button" id="reboot" class="box btn btn-primary">Reboot</div>
+            <div type="button" id="shudown" class="box btn btn-primary">Power off</div>
           </div>
 
         </div>
