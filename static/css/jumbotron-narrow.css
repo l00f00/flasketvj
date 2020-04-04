@@ -79,34 +79,41 @@ body {
 }
 
 .navbar-primary {
-  background-color: indigo;
+  background-color: #cc2ebf;
   position: relative;
-  min-width: 5vw;
+  min-width: 100%;
   /* width: ; */
   /* max-width: 10vw; */
-  height: calc(90vh-4px);
+  height: 2rem;
   z-index: 8;
-  overflow: hidden;
+  /* overflow: hidden; */
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
 
 .navbar-primary {
-  margin-right: 4px;
-  font-size: 1.1em;
-  height: calc(90vh-4px);
+  font-size: 8px !important;
+  height: 2rem;
 }
 
 .navbar-primary.collapsed {
-  width: 5vw;
-  height: calc(90vh-4px);
+  width: 100vw;
+  height: 2rem;
 }
 
+
 .navbar-primary.collapsed .glyphicon {
-  font-size: 2em;
+  font-size: 1.8em;
   text-align: center;
-  line-height: calc(90vh/6);
+  line-height: 1.8rem;
+}
+
+.nav-label {
+  font-size: 8px;
+  align-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 .navbar-primary.collapsed .nav-label {
@@ -134,24 +141,25 @@ body {
 .navbar-primary-menu li,
 .btn-expand-collapse {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
   margin: 0;
   padding: 0 !important;
   list-style: none;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: stretch;
-  align-content: center;
+  align-content: space-between;
   height: -webkit-fill-available;
 }
 
 .navbar-primary-menu li {
-  height: calc(80vh/6);
+  height: 2rem;
+  margin-top: 3px;
 }
 
 .navbar-primary-menu li a {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   text-align: center;
   vertical-align: middle;
@@ -167,7 +175,8 @@ body {
 
 .navbar-primary-menu li a .glyphicon {
   /* margin-right: 6px; */
-  text-align: center;
+  text-align: center !important;
+  width: 100%;
 }
 
 .navbar-primary-menu li a:hover {
@@ -176,17 +185,17 @@ body {
 
 .pressme {
   /* cool */
-  display: flex;
+  display: block;
 }
 
 .pressme-bar {
-  /* cool */
-  order: 1;
+  /*order: 1; */
+
 }
 
 .pressme-content {
   /* cool */
-  order: 2;
+  order: 1;
 }
 
 .pad {
@@ -272,8 +281,8 @@ body {
 }
 
 .jumbotron {
-  font-size: 1.5rem;
-  line-height: 1.5rem;
+  font-size: 0.5rem;
+  line-height: 0.5rem;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -304,35 +313,6 @@ body {
     margin: 3px;
   }
 
-  .navbar-primary {
-    background-color: indigo;
-    position: relative;
-    width: 4rem;
-    /* max-width: 10vw; */
-    height: 90vh;
-    z-index: 4;
-    overflow: hidden;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
-  }
-
-  .navbar-primary.collapsed {
-    width: 10vw;
-    height: 90vh;
-    margin: 0;
-  }
-
-  .navbar-primary.collapsed .glyphicon {
-    font-size: 3em;
-    text-align: center;
-    line-height: 3em;
-  }
-
-  .navbar-primary.collapsed .nav-label {
-    display: none !important;
-  }
-
   .jumbotron {
     width: 49vw;
     text-align: center;
@@ -340,6 +320,24 @@ body {
   }
 
   .jumbotron {
-    font-size: 1.5rem;
+    font-size: 0.5rem;
+    margin: 2px;
+    height: 2rem;
+  }
+
+  #monitor {
+    font-size: 12px;
+    height: 1rem;
+    line-height: 2rem;
+    margin: 0;
+  }
+
+  #monitor h1 h2 {
+    font-size: 12px;
+  }
+
+  .container-fluid .jumbotron {
+    padding-right: 5px;
+    padding-left: 5px;
   }
 }
