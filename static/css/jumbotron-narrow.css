@@ -14,6 +14,7 @@ body {
 
 html {
   font-size: 100%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body {
@@ -79,7 +80,7 @@ body {
 }
 
 .navbar-primary {
-  background-color: #cc2ebf;
+  background-color: #c936bc;
   position: relative;
   min-width: 100%;
   /* width: ; */
@@ -163,8 +164,8 @@ body {
   flex-wrap: wrap;
   text-align: center;
   vertical-align: middle;
-  border-bottom: solid 1px #444;
-  color: #ccc;
+  border-bottom: solid 1px rgb(255, 33, 200);
+  color: #fff;
 }
 
 .navbar-primary-menu li a:hover {
@@ -212,6 +213,7 @@ body {
   box-shadow: 2px 8px 6px -6px whitesmoke;
   background-color: #444;
   display: flex;
+  font-weight: bolder;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
@@ -220,6 +222,31 @@ body {
   border: 2px solid indigo;
   border-radius: 3px;
   margin: 5px;
+}
+
+.padonecontrols .box {
+  width: 3rem;
+  /* max-width: 60px; */
+  height: 3rem;
+  box-shadow: 2px 4px -1px -2px whitesmoke;
+  background-color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.6rem !important;
+  color: white;
+  user-select: none;
+  border: 2px solid deeppink;
+  border-radius: 3px;
+  margin: 5px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+
+.footer p {
+  font: 0.5rem bold;
+  bottom: 0;
 }
 
 .box:hover {

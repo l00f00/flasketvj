@@ -269,6 +269,7 @@ def duplicate():
 # +	Scale surface up
 @app.route("/mapper/scale_up/", methods=["POST"])
 def scale_up():
+    # keyboard.write("+")
     keyboard.write("+")
     info = "Scaled surface up +"
     return ("", 200)
@@ -278,7 +279,7 @@ def scale_up():
 # NOT WORKING
 @app.route("/mapper/scale_down/", methods=["POST"])
 def scale_down():
-    keyboard.write("-")
+    keyboard.write("--")
     info = "Scale surface down -"
     return ("", 200)
 
@@ -472,6 +473,7 @@ if __name__ == "__main__":
 #	app.run(debug=True, host="0.0.0.0", port=80)
 #     app.run()
 #	serve(app)
+
 #gnunicorn
     if __name__ == '__main__':
         app.run(debug=True,host='0.0.0.0')

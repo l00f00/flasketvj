@@ -1,7 +1,7 @@
 
 // implement methods for mapper via jquery post request
 $(document).ready(function () {
-  $('.navbar-primary').addClass('collapsed');
+  // $('.navbar-primary').addClass('collapsed');
   // hide all pads by default
   $('.pad').hide();
 

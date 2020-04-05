@@ -71,13 +71,13 @@
         </div>
         <!-- TODO:connect buttons -->
         <div class="pressme-content" style="color:whitesmoke;">
-          <div class="pad mapping_mode">
+          <div class="pad mapping_mode padonecontrols">
             <div class="box mapper_save glyphicon glyphicon-floppy-save">Save</div>
             <div class="box add_grid">🗺️ Grid</div>
             <div class="box add_quad">🟥 Quad</div>
             <div class="box add_triangle">🔺 Tria</div>
             <div class="box add_circle">🔴 Circ</div>
-            <div class="box newcomp glyphicon glyphicon-floppy-remove"> 🆕</div>
+            <div class="box newcomp glyphicon glyphicon-floppy-remove">NEW</div>
             <div class="box delete">DEL ❌</div>
             <div class="box undo">ctrl+Z 🦄</div>
             <div class="box pause"> ⏹️ ▶️ </div>
@@ -110,11 +110,16 @@
             <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
           </div>
           <div class="pad texture_mode">
+            <div class="box next_source glyphicon glyphicon-arrow-right">Next Source</div>
             <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
-            <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
+          </div>
+          <div class="pad texture_mode">
             <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
+          </div>
+          <div class="pad texture_mode">
             <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
             <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
+            <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
           </div>
           <div class="pad source_selection_mode">
             <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
@@ -123,20 +128,10 @@
             <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
             <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
           </div>
+
           <div class="pad present_mode">
-            <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
-            <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
-            <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
-            <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
-            <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
           </div>
-          <div class="pad present_mode">
-            <div class="box accuracy glyphicon glyphicon-screenshot">1px/10px</div>
-            <div class="box arrow_right glyphicon glyphicon-arrow-right"></div>
-            <div class="box arrow_up glyphicon glyphicon-arrow-up"></div>
-            <div class="box arrow_left glyphicon glyphicon-arrow-left"></div>
-            <div class="box arrow_down glyphicon glyphicon-arrow-down"></div>
-          </div>
+
           <div class="pad config_mode">
             <div class="box pad-1">Config</div>
             <div type="button" id="turn_on" class="box btn btn-success">Mapper on</div>
