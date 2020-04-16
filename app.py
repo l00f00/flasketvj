@@ -137,8 +137,11 @@ def index():
 # RUN MAPPER
 @app.route("/mapper/turn_on/", methods=["POST", "GET"])
 def turn_on():
+    # os.popen(
+    #     "/home/pi/ofx/addons/ofxPiMapper/example_basic/./bin/example_basic -f >/dev/null 2>&1"
+    # )
     os.popen(
-        "/home/pi/ofx/addons/ofxPiMapper/example_basic/./bin/example_basic -f >/dev/null 2>&1"
+        "/home/pi/ofx/apps/myApps/pimapper/./bin/piMapper -f >/dev/null 2>&1"
     )
     return ("", 200)
 
@@ -146,7 +149,8 @@ def turn_on():
 # Kill Mapper
 @app.route("/mapper/turn_off/", methods=["POST"])
 def turn_off():
-    os.system("sudo killall -u root -SIGKILL example_basic")
+    # os.system("sudo killall -u root -SIGKILL example_basic")
+    os.system("sudo killall -u root -SIGKILL piMapper")
     return ("", 200)
 
 
@@ -164,6 +168,28 @@ def clearconsole():
 def ext():
     keyboard.write("ext")
     # os.system("sudo killall -u root -SIGKILL example_basic")
+    return ("", 200)
+
+# download pimapper config
+# ~/ofx/apps/myApps/pimapper/bin/data/ofxpimapper.xml
+@app.route("/mapper/download_config/", methods=["POST"])
+def download_config():
+#TODO:dowload config 
+    return ("", 200)
+
+# upload sources to pimapper sources
+# ~/ofx/apps/myApps/pimapper/bin/data/sources/images
+# ~/ofx/apps/myApps/pimapper/bin/data/sources/videos
+@app.route("/mapper/upload_sources_video/", methods=["POST"])
+def upload_source_video():
+#TODO: upload function
+    return ("", 200)
+
+# upload sources to pimapper sources
+# ~/ofx/apps/myApps/pimapper/bin/data/sources/images
+@app.route("/mapper/upload_sources_image/", methods=["POST"])
+def upload_source_image():
+#TODO: upload function
     return ("", 200)
 
 
