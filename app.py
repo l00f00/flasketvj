@@ -153,6 +153,7 @@ def turn_off():
     os.system("sudo killall -u root -SIGKILL piMapper")
     return ("", 200)
 
+#TODO: SE LOOP / UNSET LOOP in /etc/systemd/system/pimapper.service
 
 # clearconsole
 @app.route("/mapper/clearconsole/", methods=["POST"])
