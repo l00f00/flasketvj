@@ -105,7 +105,7 @@ def getHostname():
 @app.route("/")
 def index():
     infoText = "mapper home"
-    return render_template("index.html")
+    return render_template("index.html",ipAddress=getIpAddress()[0],hostname=getHostname()[0])
 
     # return render_template(
     #     "index.html", ipAddress=getIpAddress()[0], hostname=getHostname()[0]
@@ -137,11 +137,18 @@ def index():
 # RUN MAPPER
 @app.route("/mapper/turn_on/", methods=["POST", "GET"])
 def turn_on():
-    # os.popen(
-    #     "/home/pi/ofx/addons/ofxPiMapper/example_basic/./bin/example_basic -f >/dev/null 2>&1"
-    # )
     os.popen(
-        "/home/pi/ofx/apps/myApps/pimapper/./bin/piMapper -f >/dev/null 2>&1"
+        "/home/pi/ofx/addons/ofxPiMapper/example_basic/./bin/example_basic -f >/dev/null 2>&1"
+    )
+    # os.popen(
+    #     "/home/pi/ofx/apps/myApps/pimapper/./bin/piMapper -f >/dev/null 2>&1"
+    # )
+    return ("", 200)
+# Restart Nginx
+@app.route("/mapper/restart_nginx/", methods=["POST", "GET"])
+def restart_nginx():
+    os.popen(
+        "/etc/init.d/nginx reload"
     )
     return ("", 200)
 
@@ -149,11 +156,11 @@ def turn_on():
 # Kill Mapper
 @app.route("/mapper/turn_off/", methods=["POST"])
 def turn_off():
-    # os.system("sudo killall -u root -SIGKILL example_basic")
-    os.system("sudo killall -u root -SIGKILL piMapper")
+    os.system("sudo killall -u root -SIGKILL example_basic")
+    # os.system("sudo killall -u root -SIGKILL piMapper")
     return ("", 200)
 
-#TODO: SE LOOP / UNSET LOOP in /etc/systemd/system/pimapper.service
+#TODO: SET LOOP / UNSET LOOP in /etc/systemd/system/pimapper.service
 
 # clearconsole
 @app.route("/mapper/clearconsole/", methods=["POST"])
@@ -181,9 +188,10 @@ def download_config():
 # upload sources to pimapper sources
 # ~/ofx/apps/myApps/pimapper/bin/data/sources/images
 # ~/ofx/apps/myApps/pimapper/bin/data/sources/videos
-@app.route("/mapper/upload_sources_video/", methods=["POST"])
-def upload_source_video():
-#TODO: upload function
+@app.route("/mapper/upload_usb/", methods=["POST"])
+def upload_source_usb():
+#TODO: upload function from interface
+    os.popen("/home/pi/./process-sources.sh")
     return ("", 200)
 
 # upload sources to pimapper sources

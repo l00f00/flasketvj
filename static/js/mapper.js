@@ -16,6 +16,14 @@ $(document).ready(function () {
     $.post('/mapper/turn_on/');
     $('#monitor').html("Mapper Running")
   });
+  $('#restart_nginx').click(function () {
+    $.post('/mapper/restart_nginx/');
+    $('#monitor').html("Restarting Server, give me a sec!")
+  });
+  $('#upload_usb').click(function () {
+    $.post('/mapper/upload_usb/');
+    $('#monitor').html("copy from usb started!")
+  });
   $('#turn_off').click(function () {
     $.post('/mapper/turn_off/');
     $('#monitor').html("Mapper Killed")
