@@ -18,7 +18,7 @@ Password:
 pimapperrulez
 (!CHANGE IT!)
 
-My country is IT so you will havo to update accordingly to your location:
+My country is IT so you will have to update accordingly to your location:
 
 sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 
@@ -98,8 +98,7 @@ https://www.e-tinkers.com/2018/08/how-to-properly-host-flask-application-with-ng
 
 - Since the servlet is running locally, you can access the dashboard by navigating to **http://mapperbox0.local** through your web browser
 
-## [Remotely] Accessing the Dashboard:
-
+## [Remotely] Accessing the Dashboard:not implemented yet
 <!-- ## What i learned
 
 - what really are stdin stdout
