@@ -1,16 +1,55 @@
 # Flasketvj
 
-Flask Dashboard built with Python to control videomapping stuff on raspberry pi
+Flask Dashboard built with Python to control videomapping on raspberry pi
 
-# Base setup
+## DOWNLOAD
 
-start from the image of the awsome ofxPimapper(raspbian stretch)
+I made a image with all the setupworking
+USER:
+PI
+PASSWORD:
+pimapperrulez
+
+just make an hotspot from yout mobile phone with this data:
+
+SSID:
+flasketvjnetwork
+Password:
+pimapperrulez
+(!CHANGE IT!)
+
+My country is IT so you will havo to update accordingly to your location:
+
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+
+Connect to the hostname of you raspberrypi with your browser
+frontend:
+http://mapperbox0.local
+shell:
+http://mapperbox0.local:4200
+
+or Rpi Ip Address (spoiler: you can see it in your mobile)
+
+to interact with the mapping click on the mapping button.
+
+I addeded some handy stuff like copiyng sources from usb with a button, having a shell open in the browser,have fun looking around!
+I made the interface as funny as possible. Hope you enjoy it.
+
+##TODO:
+
+- import and export config from web interface
+- upload and download sources from web interface
+- what else..
+
+## Base setup for building this was:
+
+starting from the image of the awesome ofxPimapper(raspbian stretch)
 https://ofxpimapper.com/
 https://gitlab.com/kriwkrow/pimapper/-/jobs/280309100/artifacts/raw/PiMapper_v1.2.0.zip
 burn it to sd
-git clone this repo to /home/pi/ besite the ofx folder
+git clone this repo to /home/pi/ beside the ofx folder
 
-# !!!SWITCH KEYBOARD TO AMERICAN US VIA RASPI-CONFIG !!!
+## !!!SWITCH KEYBOARD TO AMERICAN US VIA RASPI-CONFIG !!!
 
 `sudo raspi-config > Localisation Options >Change Keyboard Layout > other > Generic 105-key (Intl) PC > English US`
 
@@ -20,8 +59,8 @@ git clone this repo to /home/pi/ besite the ofx folder
 
 `sudo pip3 install flask keyboard RPi.GPIO flask-ngrok gunicorn uwsgi`
 
-## Installing Python3.6 on a Raspberry Pi Couse i want to try with ngrok
-
+## Installing Python3.6 on a Raspberry Pi becouse i want to try with ngrok forwarding the mapper frontend
+#
 `sudo apt-get install python3-dev libffi-dev libssl-dev -y
 
 sudo apt-get install python3-dev libffi-dev libssl-dev -y
@@ -48,22 +87,12 @@ https://www.e-tinkers.com/2018/08/how-to-properly-host-flask-application-with-ng
 
   `sudo apt-get install python3-flask`
 
-## Spinning the shit in development:
+## Spinning the in development:
 
 - **app.py** is our servlet, which runs using Flask (http://flask.pocoo.org/). Install it by running:
 
   `cd flasketvj/`
   `sudo python3 app.py`
-
-<!-- ## Starting the servlet: ##
-* change to the **rpi-status-monitor** directory
-* From the command line:
-
-  `sudo python3 app.py`
-* My servlet is running through crontab on my raspberry pi. It runs the program every time the rpi restarts.
-  For info on how to set up crontab, follow this link: https://www.raspberrypi.org/documentation/linux/usage/cron.md
-
-  `@reboot sudo python3 rpi-status-monitor/app.py &` -->
 
 ## [Locally] Accessing the Dashboard:
 
@@ -71,7 +100,7 @@ https://www.e-tinkers.com/2018/08/how-to-properly-host-flask-application-with-ng
 
 ## [Remotely] Accessing the Dashboard:
 
-## What i learned
+<!-- ## What i learned
 
 - what really are stdin stdout
 - Each file in Linux has a corresponding File Descriptor associated with it
@@ -80,8 +109,8 @@ https://www.e-tinkers.com/2018/08/how-to-properly-host-flask-application-with-ng
 - "<" is the input redirection operator
 - ">&"re-directs output of one file to another.
 - You can re-direct error using its corresponding File Descriptor 2.
-  https://www.guru99.com/linux-redirection.html
+  https://www.guru99.com/linux-redirection.html -->
 
-## TODO
+<!-- ## TODO
 -switch access point - client - no wifi with Gpio buttons
- https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/158-raspberry-pi-auto-wifi-hotspot-switch-direct-connection
+ https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/158-raspberry-pi-auto-wifi-hotspot-switch-direct-connection -->

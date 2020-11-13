@@ -314,7 +314,7 @@ def scale_up():
 # NOT WORKING
 @app.route("/mapper/scale_down/", methods=["POST"])
 def scale_down():
-    keyboard.write("--")
+    keyboard.write("-")
     info = "Scale surface down -"
     return ("", 200)
 
